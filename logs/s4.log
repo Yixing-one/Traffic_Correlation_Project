@@ -1,0 +1,1353 @@
+Calling target program-options parser
+[11:30:26.520] [bmv2] [D] [thread 11915] Set default default entry for table 'MyIngress.ipv4_lpm': NoAction - 
+[11:30:26.522] [bmv2] [D] [thread 11915] Set default default entry for table 'tbl_compute_hash_flow_id': MyEgress.compute_hash_flow_id - 
+[11:30:26.522] [bmv2] [D] [thread 11915] Set default default entry for table 'tbl_basic143': basic143 - 
+Adding interface s4-eth1 as port 1
+[11:30:26.527] [bmv2] [D] [thread 11915] Adding interface s4-eth1 as port 1
+Adding interface s4-eth2 as port 2
+[11:30:26.575] [bmv2] [D] [thread 11915] Adding interface s4-eth2 as port 2
+Server listening on 0.0.0.0:50054
+[11:30:26.609] [bmv2] [I] [thread 11915] Starting Thrift server on port 9093
+[11:30:26.611] [bmv2] [I] [thread 11915] Thrift server was started
+[11:30:28.189] [bmv2] [W] [thread 11975] [P4Runtime] p4::tmp::P4DeviceConfig is deprecated
+[11:30:28.190] [bmv2] [D] [thread 11975] Set default default entry for table 'MyIngress.ipv4_lpm': NoAction - 
+[11:30:28.190] [bmv2] [D] [thread 11975] Set default default entry for table 'tbl_compute_hash_flow_id': MyEgress.compute_hash_flow_id - 
+[11:30:28.191] [bmv2] [D] [thread 11975] Set default default entry for table 'tbl_basic143': basic143 - 
+[11:30:28.191] [bmv2] [D] [thread 11975] simple_switch target has been notified of a config swap
+[11:30:28.194] [bmv2] [D] [thread 11976] Set default entry for table 'MyIngress.ipv4_lpm': MyIngress.drop - 
+[11:30:28.196] [bmv2] [D] [thread 11975] Entry 0 added to table 'MyIngress.ipv4_lpm'
+[11:30:28.197] [bmv2] [D] [thread 11975] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000101/32
+Action entry: MyIngress.ipv4_forward - 80000000100,2,
+
+[11:30:28.199] [bmv2] [D] [thread 11976] Entry 1 added to table 'MyIngress.ipv4_lpm'
+[11:30:28.199] [bmv2] [D] [thread 11976] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000202/32
+Action entry: MyIngress.ipv4_forward - 80000000100,2,
+
+[11:30:28.201] [bmv2] [D] [thread 11975] Entry 2 added to table 'MyIngress.ipv4_lpm'
+[11:30:28.201] [bmv2] [D] [thread 11975] Dumping entry 2
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000303/32
+Action entry: MyIngress.ipv4_forward - 80000000200,1,
+
+[11:30:28.204] [bmv2] [D] [thread 11976] Entry 3 added to table 'MyIngress.ipv4_lpm'
+[11:30:28.204] [bmv2] [D] [thread 11976] Dumping entry 3
+Match key:
+* hdr.ipv4.dstAddr    : LPM       0a000404/32
+Action entry: MyIngress.ipv4_forward - 80000000200,1,
+
+[11:30:30.176] [bmv2] [D] [thread 11925] [0.0] [cxt 0] Processing packet received on port 1
+[11:30:30.177] [bmv2] [D] [thread 11925] [0.0] [cxt 0] Parser 'parser': start
+[11:30:30.179] [bmv2] [D] [thread 11925] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:30.180] [bmv2] [D] [thread 11925] [0.0] [cxt 0] Extracting header 'ethernet'
+[11:30:30.184] [bmv2] [D] [thread 11925] [0.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:30.184] [bmv2] [T] [thread 11925] [0.0] [cxt 0] Bytes parsed: 14
+[11:30:30.186] [bmv2] [D] [thread 11925] [0.0] [cxt 0] Parser 'parser': end
+[11:30:30.187] [bmv2] [D] [thread 11925] [0.0] [cxt 0] Pipeline 'ingress': start
+[11:30:30.188] [bmv2] [T] [thread 11925] [0.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:30.188] [bmv2] [D] [thread 11925] [0.0] [cxt 0] Pipeline 'ingress': end
+[11:30:30.188] [bmv2] [D] [thread 11925] [0.0] [cxt 0] Egress port is 0
+[11:30:30.189] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Pipeline 'egress': start
+[11:30:30.189] [bmv2] [T] [thread 11926] [0.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:30.189] [bmv2] [T] [thread 11926] [0.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:30.189] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Looking up key:
+
+[11:30:30.190] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:30.190] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:30.190] [bmv2] [T] [thread 11926] [0.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:30.190] [bmv2] [T] [thread 11926] [0.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:30.191] [bmv2] [T] [thread 11926] [0.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:30.191] [bmv2] [T] [thread 11926] [0.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:30.191] [bmv2] [T] [thread 11926] [0.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:30.191] [bmv2] [T] [thread 11926] [0.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:30.191] [bmv2] [T] [thread 11926] [0.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:30.191] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Looking up key:
+
+[11:30:30.191] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:30.191] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Action entry is basic143 - 
+[11:30:30.191] [bmv2] [T] [thread 11926] [0.0] [cxt 0] Action basic143
+[11:30:30.191] [bmv2] [T] [thread 11926] [0.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:30.191] [bmv2] [T] [thread 11926] [0.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 0
+[11:30:30.191] [bmv2] [T] [thread 11926] [0.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:30.191] [bmv2] [T] [thread 11926] [0.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:30.192] [bmv2] [T] [thread 11926] [0.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 1
+[11:30:30.192] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Pipeline 'egress': end
+[11:30:30.192] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Deparser 'deparser': start
+[11:30:30.192] [bmv2] [T] [thread 11926] [0.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:30.192] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:30.192] [bmv2] [D] [thread 11926] [0.0] [cxt 0] Deparser 'deparser': end
+[11:30:30.192] [bmv2] [D] [thread 11930] [0.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:30.432] [bmv2] [D] [thread 11925] [1.0] [cxt 0] Processing packet received on port 2
+[11:30:30.433] [bmv2] [D] [thread 11925] [1.0] [cxt 0] Parser 'parser': start
+[11:30:30.433] [bmv2] [D] [thread 11925] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:30.434] [bmv2] [D] [thread 11925] [1.0] [cxt 0] Extracting header 'ethernet'
+[11:30:30.435] [bmv2] [D] [thread 11925] [1.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:30.436] [bmv2] [T] [thread 11925] [1.0] [cxt 0] Bytes parsed: 14
+[11:30:30.437] [bmv2] [D] [thread 11925] [1.0] [cxt 0] Parser 'parser': end
+[11:30:30.441] [bmv2] [D] [thread 11925] [1.0] [cxt 0] Pipeline 'ingress': start
+[11:30:30.441] [bmv2] [T] [thread 11925] [1.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:30.441] [bmv2] [D] [thread 11925] [1.0] [cxt 0] Pipeline 'ingress': end
+[11:30:30.441] [bmv2] [D] [thread 11925] [1.0] [cxt 0] Egress port is 0
+[11:30:30.441] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Pipeline 'egress': start
+[11:30:30.441] [bmv2] [T] [thread 11926] [1.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:30.441] [bmv2] [T] [thread 11926] [1.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:30.441] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Looking up key:
+
+[11:30:30.441] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:30.441] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:30.441] [bmv2] [T] [thread 11926] [1.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:30.442] [bmv2] [T] [thread 11926] [1.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:30.442] [bmv2] [T] [thread 11926] [1.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:30.442] [bmv2] [T] [thread 11926] [1.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:30.442] [bmv2] [T] [thread 11926] [1.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:30.442] [bmv2] [T] [thread 11926] [1.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:30.442] [bmv2] [T] [thread 11926] [1.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:30.442] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Looking up key:
+
+[11:30:30.442] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:30.442] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Action entry is basic143 - 
+[11:30:30.443] [bmv2] [T] [thread 11926] [1.0] [cxt 0] Action basic143
+[11:30:30.443] [bmv2] [T] [thread 11926] [1.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:30.443] [bmv2] [T] [thread 11926] [1.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 1
+[11:30:30.443] [bmv2] [T] [thread 11926] [1.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:30.443] [bmv2] [T] [thread 11926] [1.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:30.443] [bmv2] [T] [thread 11926] [1.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 2
+[11:30:30.444] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Pipeline 'egress': end
+[11:30:30.444] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Deparser 'deparser': start
+[11:30:30.445] [bmv2] [T] [thread 11926] [1.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:30.445] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:30.445] [bmv2] [D] [thread 11926] [1.0] [cxt 0] Deparser 'deparser': end
+[11:30:30.446] [bmv2] [D] [thread 11930] [1.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:30.442] [bmv2] [D] [thread 11925] [2.0] [cxt 0] Processing packet received on port 2
+[11:30:30.446] [bmv2] [D] [thread 11925] [2.0] [cxt 0] Parser 'parser': start
+[11:30:30.446] [bmv2] [D] [thread 11925] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:30.446] [bmv2] [D] [thread 11925] [2.0] [cxt 0] Extracting header 'ethernet'
+[11:30:30.446] [bmv2] [D] [thread 11925] [2.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:30.446] [bmv2] [T] [thread 11925] [2.0] [cxt 0] Bytes parsed: 14
+[11:30:30.446] [bmv2] [D] [thread 11925] [2.0] [cxt 0] Parser 'parser': end
+[11:30:30.446] [bmv2] [D] [thread 11925] [2.0] [cxt 0] Pipeline 'ingress': start
+[11:30:30.446] [bmv2] [T] [thread 11925] [2.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:30.447] [bmv2] [D] [thread 11925] [2.0] [cxt 0] Pipeline 'ingress': end
+[11:30:30.447] [bmv2] [D] [thread 11925] [2.0] [cxt 0] Egress port is 0
+[11:30:30.447] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Pipeline 'egress': start
+[11:30:30.447] [bmv2] [T] [thread 11926] [2.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:30.447] [bmv2] [T] [thread 11926] [2.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:30.447] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Looking up key:
+
+[11:30:30.447] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:30.447] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:30.447] [bmv2] [T] [thread 11926] [2.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:30.447] [bmv2] [T] [thread 11926] [2.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:30.447] [bmv2] [T] [thread 11926] [2.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:30.447] [bmv2] [T] [thread 11926] [2.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:30.448] [bmv2] [T] [thread 11926] [2.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:30.448] [bmv2] [T] [thread 11926] [2.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:30.448] [bmv2] [T] [thread 11926] [2.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:30.448] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Looking up key:
+
+[11:30:30.448] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:30.448] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Action entry is basic143 - 
+[11:30:30.448] [bmv2] [T] [thread 11926] [2.0] [cxt 0] Action basic143
+[11:30:30.448] [bmv2] [T] [thread 11926] [2.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:30.448] [bmv2] [T] [thread 11926] [2.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 2
+[11:30:30.448] [bmv2] [T] [thread 11926] [2.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:30.448] [bmv2] [T] [thread 11926] [2.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:30.448] [bmv2] [T] [thread 11926] [2.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 3
+[11:30:30.448] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Pipeline 'egress': end
+[11:30:30.449] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Deparser 'deparser': start
+[11:30:30.449] [bmv2] [T] [thread 11926] [2.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:30.449] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:30.449] [bmv2] [D] [thread 11926] [2.0] [cxt 0] Deparser 'deparser': end
+[11:30:30.449] [bmv2] [D] [thread 11930] [2.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:30.943] [bmv2] [D] [thread 11925] [3.0] [cxt 0] Processing packet received on port 1
+[11:30:30.944] [bmv2] [D] [thread 11925] [3.0] [cxt 0] Parser 'parser': start
+[11:30:30.945] [bmv2] [D] [thread 11925] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:30.945] [bmv2] [D] [thread 11925] [3.0] [cxt 0] Extracting header 'ethernet'
+[11:30:30.947] [bmv2] [D] [thread 11925] [3.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:30.947] [bmv2] [T] [thread 11925] [3.0] [cxt 0] Bytes parsed: 14
+[11:30:30.947] [bmv2] [D] [thread 11925] [3.0] [cxt 0] Parser 'parser': end
+[11:30:30.948] [bmv2] [D] [thread 11925] [3.0] [cxt 0] Pipeline 'ingress': start
+[11:30:30.948] [bmv2] [T] [thread 11925] [3.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:30.948] [bmv2] [D] [thread 11925] [3.0] [cxt 0] Pipeline 'ingress': end
+[11:30:30.948] [bmv2] [D] [thread 11925] [3.0] [cxt 0] Egress port is 0
+[11:30:30.948] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Pipeline 'egress': start
+[11:30:30.948] [bmv2] [T] [thread 11926] [3.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:30.949] [bmv2] [T] [thread 11926] [3.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:30.949] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Looking up key:
+
+[11:30:30.949] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:30.949] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:30.949] [bmv2] [T] [thread 11926] [3.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:30.949] [bmv2] [T] [thread 11926] [3.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:30.949] [bmv2] [T] [thread 11926] [3.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:30.950] [bmv2] [T] [thread 11926] [3.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:30.950] [bmv2] [T] [thread 11926] [3.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:30.950] [bmv2] [T] [thread 11926] [3.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:30.950] [bmv2] [T] [thread 11926] [3.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:30.950] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Looking up key:
+
+[11:30:30.951] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:30.951] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Action entry is basic143 - 
+[11:30:30.951] [bmv2] [T] [thread 11926] [3.0] [cxt 0] Action basic143
+[11:30:30.951] [bmv2] [T] [thread 11926] [3.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:30.951] [bmv2] [T] [thread 11926] [3.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 3
+[11:30:30.951] [bmv2] [T] [thread 11926] [3.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:30.951] [bmv2] [T] [thread 11926] [3.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:30.952] [bmv2] [T] [thread 11926] [3.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 4
+[11:30:30.952] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Pipeline 'egress': end
+[11:30:30.952] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Deparser 'deparser': start
+[11:30:30.952] [bmv2] [T] [thread 11926] [3.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:30.952] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:30.952] [bmv2] [D] [thread 11926] [3.0] [cxt 0] Deparser 'deparser': end
+[11:30:30.952] [bmv2] [D] [thread 11930] [3.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:38.371] [bmv2] [D] [thread 11925] [4.0] [cxt 0] Processing packet received on port 2
+[11:30:38.372] [bmv2] [D] [thread 11925] [4.0] [cxt 0] Parser 'parser': start
+[11:30:38.375] [bmv2] [D] [thread 11925] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:38.378] [bmv2] [D] [thread 11925] [4.0] [cxt 0] Extracting header 'ethernet'
+[11:30:38.378] [bmv2] [D] [thread 11925] [4.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:38.379] [bmv2] [T] [thread 11925] [4.0] [cxt 0] Bytes parsed: 14
+[11:30:38.380] [bmv2] [D] [thread 11925] [4.0] [cxt 0] Parser 'parser': end
+[11:30:38.381] [bmv2] [D] [thread 11925] [4.0] [cxt 0] Pipeline 'ingress': start
+[11:30:38.382] [bmv2] [T] [thread 11925] [4.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:38.383] [bmv2] [D] [thread 11925] [4.0] [cxt 0] Pipeline 'ingress': end
+[11:30:38.384] [bmv2] [D] [thread 11925] [4.0] [cxt 0] Egress port is 0
+[11:30:38.385] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Pipeline 'egress': start
+[11:30:38.385] [bmv2] [T] [thread 11926] [4.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:38.385] [bmv2] [T] [thread 11926] [4.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:38.385] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Looking up key:
+
+[11:30:38.386] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:38.386] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:38.386] [bmv2] [T] [thread 11926] [4.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:38.386] [bmv2] [T] [thread 11926] [4.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:38.386] [bmv2] [T] [thread 11926] [4.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:38.387] [bmv2] [T] [thread 11926] [4.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:38.387] [bmv2] [T] [thread 11926] [4.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:38.387] [bmv2] [T] [thread 11926] [4.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:38.387] [bmv2] [T] [thread 11926] [4.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:38.387] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Looking up key:
+
+[11:30:38.387] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:38.388] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Action entry is basic143 - 
+[11:30:38.388] [bmv2] [T] [thread 11926] [4.0] [cxt 0] Action basic143
+[11:30:38.388] [bmv2] [T] [thread 11926] [4.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:38.389] [bmv2] [T] [thread 11926] [4.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 4
+[11:30:38.389] [bmv2] [T] [thread 11926] [4.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:38.389] [bmv2] [T] [thread 11926] [4.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:38.389] [bmv2] [T] [thread 11926] [4.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 5
+[11:30:38.389] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Pipeline 'egress': end
+[11:30:38.389] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Deparser 'deparser': start
+[11:30:38.389] [bmv2] [T] [thread 11926] [4.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:38.389] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:38.389] [bmv2] [D] [thread 11926] [4.0] [cxt 0] Deparser 'deparser': end
+[11:30:38.390] [bmv2] [D] [thread 11930] [4.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:38.624] [bmv2] [D] [thread 11925] [5.0] [cxt 0] Processing packet received on port 1
+[11:30:38.628] [bmv2] [D] [thread 11925] [5.0] [cxt 0] Parser 'parser': start
+[11:30:38.629] [bmv2] [D] [thread 11925] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:38.630] [bmv2] [D] [thread 11925] [5.0] [cxt 0] Extracting header 'ethernet'
+[11:30:38.630] [bmv2] [D] [thread 11925] [5.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:38.630] [bmv2] [T] [thread 11925] [5.0] [cxt 0] Bytes parsed: 14
+[11:30:38.631] [bmv2] [D] [thread 11925] [5.0] [cxt 0] Parser 'parser': end
+[11:30:38.631] [bmv2] [D] [thread 11925] [5.0] [cxt 0] Pipeline 'ingress': start
+[11:30:38.631] [bmv2] [T] [thread 11925] [5.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:38.632] [bmv2] [D] [thread 11925] [5.0] [cxt 0] Pipeline 'ingress': end
+[11:30:38.632] [bmv2] [D] [thread 11925] [5.0] [cxt 0] Egress port is 0
+[11:30:38.633] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Pipeline 'egress': start
+[11:30:38.633] [bmv2] [T] [thread 11926] [5.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:38.633] [bmv2] [T] [thread 11926] [5.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:38.633] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Looking up key:
+
+[11:30:38.633] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:38.634] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:38.634] [bmv2] [T] [thread 11926] [5.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:38.634] [bmv2] [T] [thread 11926] [5.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:38.634] [bmv2] [T] [thread 11926] [5.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:38.634] [bmv2] [T] [thread 11926] [5.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:38.634] [bmv2] [T] [thread 11926] [5.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:38.634] [bmv2] [T] [thread 11926] [5.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:38.634] [bmv2] [T] [thread 11926] [5.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:38.634] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Looking up key:
+
+[11:30:38.634] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:38.634] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Action entry is basic143 - 
+[11:30:38.635] [bmv2] [T] [thread 11926] [5.0] [cxt 0] Action basic143
+[11:30:38.635] [bmv2] [T] [thread 11926] [5.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:38.636] [bmv2] [T] [thread 11926] [5.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 5
+[11:30:38.636] [bmv2] [T] [thread 11926] [5.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:38.636] [bmv2] [T] [thread 11926] [5.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:38.636] [bmv2] [T] [thread 11926] [5.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 6
+[11:30:38.636] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Pipeline 'egress': end
+[11:30:38.636] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Deparser 'deparser': start
+[11:30:38.637] [bmv2] [T] [thread 11926] [5.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:38.637] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:38.637] [bmv2] [D] [thread 11926] [5.0] [cxt 0] Deparser 'deparser': end
+[11:30:38.637] [bmv2] [D] [thread 11930] [5.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:38.879] [bmv2] [D] [thread 11925] [6.0] [cxt 0] Processing packet received on port 2
+[11:30:38.880] [bmv2] [D] [thread 11925] [6.0] [cxt 0] Parser 'parser': start
+[11:30:38.880] [bmv2] [D] [thread 11925] [6.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:38.881] [bmv2] [D] [thread 11925] [6.0] [cxt 0] Extracting header 'ethernet'
+[11:30:38.881] [bmv2] [D] [thread 11925] [6.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:38.881] [bmv2] [T] [thread 11925] [6.0] [cxt 0] Bytes parsed: 14
+[11:30:38.882] [bmv2] [D] [thread 11925] [6.0] [cxt 0] Parser 'parser': end
+[11:30:38.882] [bmv2] [D] [thread 11925] [6.0] [cxt 0] Pipeline 'ingress': start
+[11:30:38.883] [bmv2] [T] [thread 11925] [6.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:38.887] [bmv2] [D] [thread 11925] [6.0] [cxt 0] Pipeline 'ingress': end
+[11:30:38.887] [bmv2] [D] [thread 11925] [6.0] [cxt 0] Egress port is 0
+[11:30:38.888] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Pipeline 'egress': start
+[11:30:38.888] [bmv2] [T] [thread 11926] [6.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:38.888] [bmv2] [T] [thread 11926] [6.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:38.888] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Looking up key:
+
+[11:30:38.888] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:38.888] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:38.888] [bmv2] [T] [thread 11926] [6.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:38.888] [bmv2] [T] [thread 11926] [6.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:38.888] [bmv2] [T] [thread 11926] [6.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:38.888] [bmv2] [T] [thread 11926] [6.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:38.888] [bmv2] [T] [thread 11926] [6.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:38.888] [bmv2] [T] [thread 11926] [6.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:38.888] [bmv2] [T] [thread 11926] [6.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:38.888] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Looking up key:
+
+[11:30:38.888] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:38.888] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Action entry is basic143 - 
+[11:30:38.889] [bmv2] [T] [thread 11926] [6.0] [cxt 0] Action basic143
+[11:30:38.889] [bmv2] [T] [thread 11926] [6.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:38.889] [bmv2] [T] [thread 11926] [6.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 6
+[11:30:38.889] [bmv2] [T] [thread 11926] [6.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:38.889] [bmv2] [T] [thread 11926] [6.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:38.890] [bmv2] [T] [thread 11926] [6.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 7
+[11:30:38.890] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Pipeline 'egress': end
+[11:30:38.890] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Deparser 'deparser': start
+[11:30:38.890] [bmv2] [T] [thread 11926] [6.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:38.890] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:38.891] [bmv2] [D] [thread 11926] [6.0] [cxt 0] Deparser 'deparser': end
+[11:30:38.891] [bmv2] [D] [thread 11930] [6.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:39.390] [bmv2] [D] [thread 11925] [7.0] [cxt 0] Processing packet received on port 1
+[11:30:39.390] [bmv2] [D] [thread 11925] [7.0] [cxt 0] Parser 'parser': start
+[11:30:39.390] [bmv2] [D] [thread 11925] [7.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:39.390] [bmv2] [D] [thread 11925] [7.0] [cxt 0] Extracting header 'ethernet'
+[11:30:39.390] [bmv2] [D] [thread 11925] [7.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:39.390] [bmv2] [T] [thread 11925] [7.0] [cxt 0] Bytes parsed: 14
+[11:30:39.391] [bmv2] [D] [thread 11925] [7.0] [cxt 0] Parser 'parser': end
+[11:30:39.391] [bmv2] [D] [thread 11925] [7.0] [cxt 0] Pipeline 'ingress': start
+[11:30:39.392] [bmv2] [T] [thread 11925] [7.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:39.392] [bmv2] [D] [thread 11925] [7.0] [cxt 0] Pipeline 'ingress': end
+[11:30:39.412] [bmv2] [D] [thread 11925] [7.0] [cxt 0] Egress port is 0
+[11:30:39.412] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Pipeline 'egress': start
+[11:30:39.413] [bmv2] [T] [thread 11926] [7.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:39.413] [bmv2] [T] [thread 11926] [7.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:39.414] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Looking up key:
+
+[11:30:39.414] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:39.415] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:39.416] [bmv2] [T] [thread 11926] [7.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:39.416] [bmv2] [T] [thread 11926] [7.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:39.417] [bmv2] [T] [thread 11926] [7.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:39.418] [bmv2] [T] [thread 11926] [7.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:39.419] [bmv2] [T] [thread 11926] [7.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:39.420] [bmv2] [T] [thread 11926] [7.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:39.420] [bmv2] [T] [thread 11926] [7.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:39.420] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Looking up key:
+
+[11:30:39.422] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:39.422] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Action entry is basic143 - 
+[11:30:39.441] [bmv2] [T] [thread 11926] [7.0] [cxt 0] Action basic143
+[11:30:39.442] [bmv2] [T] [thread 11926] [7.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:39.442] [bmv2] [T] [thread 11926] [7.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 7
+[11:30:39.443] [bmv2] [T] [thread 11926] [7.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:39.443] [bmv2] [T] [thread 11926] [7.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:39.444] [bmv2] [T] [thread 11926] [7.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 8
+[11:30:39.447] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Pipeline 'egress': end
+[11:30:39.449] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Deparser 'deparser': start
+[11:30:39.451] [bmv2] [T] [thread 11926] [7.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:39.452] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:39.452] [bmv2] [D] [thread 11926] [7.0] [cxt 0] Deparser 'deparser': end
+[11:30:39.453] [bmv2] [D] [thread 11930] [7.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:53.472] [bmv2] [D] [thread 11925] [8.0] [cxt 0] Processing packet received on port 2
+[11:30:53.473] [bmv2] [D] [thread 11925] [8.0] [cxt 0] Parser 'parser': start
+[11:30:53.474] [bmv2] [D] [thread 11925] [8.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:53.474] [bmv2] [D] [thread 11925] [8.0] [cxt 0] Extracting header 'ethernet'
+[11:30:53.475] [bmv2] [D] [thread 11925] [8.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:53.475] [bmv2] [T] [thread 11925] [8.0] [cxt 0] Bytes parsed: 14
+[11:30:53.475] [bmv2] [D] [thread 11925] [8.0] [cxt 0] Parser 'parser': end
+[11:30:53.475] [bmv2] [D] [thread 11925] [8.0] [cxt 0] Pipeline 'ingress': start
+[11:30:53.476] [bmv2] [T] [thread 11925] [8.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:53.476] [bmv2] [D] [thread 11925] [8.0] [cxt 0] Pipeline 'ingress': end
+[11:30:53.476] [bmv2] [D] [thread 11925] [8.0] [cxt 0] Egress port is 0
+[11:30:53.478] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Pipeline 'egress': start
+[11:30:53.478] [bmv2] [T] [thread 11926] [8.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:53.479] [bmv2] [T] [thread 11926] [8.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:53.481] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Looking up key:
+
+[11:30:53.481] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:53.482] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:53.483] [bmv2] [T] [thread 11926] [8.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:53.483] [bmv2] [T] [thread 11926] [8.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:53.483] [bmv2] [T] [thread 11926] [8.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:53.484] [bmv2] [T] [thread 11926] [8.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:53.484] [bmv2] [T] [thread 11926] [8.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:53.485] [bmv2] [T] [thread 11926] [8.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:53.485] [bmv2] [T] [thread 11926] [8.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:53.486] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Looking up key:
+
+[11:30:53.486] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:53.487] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Action entry is basic143 - 
+[11:30:53.487] [bmv2] [T] [thread 11926] [8.0] [cxt 0] Action basic143
+[11:30:53.487] [bmv2] [T] [thread 11926] [8.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:53.489] [bmv2] [T] [thread 11926] [8.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 8
+[11:30:53.489] [bmv2] [T] [thread 11926] [8.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:53.489] [bmv2] [T] [thread 11926] [8.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:53.489] [bmv2] [T] [thread 11926] [8.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 9
+[11:30:53.490] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Pipeline 'egress': end
+[11:30:53.491] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Deparser 'deparser': start
+[11:30:53.491] [bmv2] [T] [thread 11926] [8.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:53.491] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:53.491] [bmv2] [D] [thread 11926] [8.0] [cxt 0] Deparser 'deparser': end
+[11:30:53.491] [bmv2] [D] [thread 11930] [8.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:56.799] [bmv2] [D] [thread 11925] [9.0] [cxt 0] Processing packet received on port 1
+[11:30:56.800] [bmv2] [D] [thread 11925] [9.0] [cxt 0] Parser 'parser': start
+[11:30:56.800] [bmv2] [D] [thread 11925] [9.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:56.800] [bmv2] [D] [thread 11925] [9.0] [cxt 0] Extracting header 'ethernet'
+[11:30:56.801] [bmv2] [D] [thread 11925] [9.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:56.801] [bmv2] [T] [thread 11925] [9.0] [cxt 0] Bytes parsed: 14
+[11:30:56.802] [bmv2] [D] [thread 11925] [9.0] [cxt 0] Parser 'parser': end
+[11:30:56.802] [bmv2] [D] [thread 11925] [9.0] [cxt 0] Pipeline 'ingress': start
+[11:30:56.803] [bmv2] [T] [thread 11925] [9.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:56.803] [bmv2] [D] [thread 11925] [9.0] [cxt 0] Pipeline 'ingress': end
+[11:30:56.804] [bmv2] [D] [thread 11925] [9.0] [cxt 0] Egress port is 0
+[11:30:56.807] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Pipeline 'egress': start
+[11:30:56.807] [bmv2] [T] [thread 11926] [9.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:56.808] [bmv2] [T] [thread 11926] [9.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:56.808] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Looking up key:
+
+[11:30:56.806] [bmv2] [D] [thread 11925] [10.0] [cxt 0] Processing packet received on port 2
+[11:30:56.809] [bmv2] [D] [thread 11925] [10.0] [cxt 0] Parser 'parser': start
+[11:30:56.809] [bmv2] [D] [thread 11925] [10.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:56.809] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:56.811] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:56.811] [bmv2] [T] [thread 11926] [9.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:56.811] [bmv2] [T] [thread 11926] [9.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:56.811] [bmv2] [D] [thread 11925] [10.0] [cxt 0] Extracting header 'ethernet'
+[11:30:56.812] [bmv2] [T] [thread 11926] [9.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:56.813] [bmv2] [T] [thread 11926] [9.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:56.813] [bmv2] [T] [thread 11926] [9.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:56.814] [bmv2] [T] [thread 11926] [9.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:56.814] [bmv2] [T] [thread 11926] [9.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:56.814] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Looking up key:
+
+[11:30:56.814] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:56.815] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Action entry is basic143 - 
+[11:30:56.815] [bmv2] [T] [thread 11926] [9.0] [cxt 0] Action basic143
+[11:30:56.816] [bmv2] [T] [thread 11926] [9.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:56.816] [bmv2] [T] [thread 11926] [9.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 9
+[11:30:56.816] [bmv2] [T] [thread 11926] [9.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:56.813] [bmv2] [D] [thread 11925] [10.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:56.817] [bmv2] [T] [thread 11925] [10.0] [cxt 0] Bytes parsed: 14
+[11:30:56.818] [bmv2] [D] [thread 11925] [10.0] [cxt 0] Parser 'parser': end
+[11:30:56.817] [bmv2] [T] [thread 11926] [9.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:56.819] [bmv2] [T] [thread 11926] [9.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 10
+[11:30:56.819] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Pipeline 'egress': end
+[11:30:56.819] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Deparser 'deparser': start
+[11:30:56.820] [bmv2] [T] [thread 11926] [9.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:56.821] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:56.823] [bmv2] [D] [thread 11926] [9.0] [cxt 0] Deparser 'deparser': end
+[11:30:56.823] [bmv2] [D] [thread 11930] [9.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:56.818] [bmv2] [D] [thread 11925] [10.0] [cxt 0] Pipeline 'ingress': start
+[11:30:56.824] [bmv2] [T] [thread 11925] [10.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:56.825] [bmv2] [D] [thread 11925] [10.0] [cxt 0] Pipeline 'ingress': end
+[11:30:56.826] [bmv2] [D] [thread 11925] [10.0] [cxt 0] Egress port is 0
+[11:30:56.826] [bmv2] [D] [thread 11925] [11.0] [cxt 0] Processing packet received on port 1
+[11:30:56.826] [bmv2] [D] [thread 11925] [11.0] [cxt 0] Parser 'parser': start
+[11:30:56.827] [bmv2] [D] [thread 11925] [11.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:30:56.827] [bmv2] [D] [thread 11925] [11.0] [cxt 0] Extracting header 'ethernet'
+[11:30:56.828] [bmv2] [D] [thread 11925] [11.0] [cxt 0] Parser state 'start': key is 86dd
+[11:30:56.828] [bmv2] [T] [thread 11925] [11.0] [cxt 0] Bytes parsed: 14
+[11:30:56.829] [bmv2] [D] [thread 11925] [11.0] [cxt 0] Parser 'parser': end
+[11:30:56.829] [bmv2] [D] [thread 11925] [11.0] [cxt 0] Pipeline 'ingress': start
+[11:30:56.829] [bmv2] [T] [thread 11925] [11.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:30:56.829] [bmv2] [D] [thread 11925] [11.0] [cxt 0] Pipeline 'ingress': end
+[11:30:56.829] [bmv2] [D] [thread 11925] [11.0] [cxt 0] Egress port is 0
+[11:30:56.826] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Pipeline 'egress': start
+[11:30:56.830] [bmv2] [T] [thread 11926] [10.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:56.830] [bmv2] [T] [thread 11926] [10.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:56.830] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Looking up key:
+
+[11:30:56.830] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:56.830] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:56.831] [bmv2] [T] [thread 11926] [10.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:56.831] [bmv2] [T] [thread 11926] [10.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:56.831] [bmv2] [T] [thread 11926] [10.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:56.831] [bmv2] [T] [thread 11926] [10.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:56.831] [bmv2] [T] [thread 11926] [10.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:56.831] [bmv2] [T] [thread 11926] [10.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:56.832] [bmv2] [T] [thread 11926] [10.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:56.832] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Looking up key:
+
+[11:30:56.832] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:56.832] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Action entry is basic143 - 
+[11:30:56.832] [bmv2] [T] [thread 11926] [10.0] [cxt 0] Action basic143
+[11:30:56.832] [bmv2] [T] [thread 11926] [10.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:56.832] [bmv2] [T] [thread 11926] [10.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 10
+[11:30:56.832] [bmv2] [T] [thread 11926] [10.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:56.833] [bmv2] [T] [thread 11926] [10.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:56.833] [bmv2] [T] [thread 11926] [10.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 11
+[11:30:56.833] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Pipeline 'egress': end
+[11:30:56.833] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Deparser 'deparser': start
+[11:30:56.833] [bmv2] [T] [thread 11926] [10.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:56.833] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:56.834] [bmv2] [D] [thread 11926] [10.0] [cxt 0] Deparser 'deparser': end
+[11:30:56.834] [bmv2] [D] [thread 11930] [10.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:30:56.834] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Pipeline 'egress': start
+[11:30:56.834] [bmv2] [T] [thread 11926] [11.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:30:56.835] [bmv2] [T] [thread 11926] [11.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:30:56.835] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Looking up key:
+
+[11:30:56.835] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:30:56.835] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:30:56.836] [bmv2] [T] [thread 11926] [11.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:30:56.836] [bmv2] [T] [thread 11926] [11.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:30:56.836] [bmv2] [T] [thread 11926] [11.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:30:56.837] [bmv2] [T] [thread 11926] [11.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:30:56.837] [bmv2] [T] [thread 11926] [11.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:30:56.837] [bmv2] [T] [thread 11926] [11.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:30:56.838] [bmv2] [T] [thread 11926] [11.0] [cxt 0] Applying table 'tbl_basic143'
+[11:30:56.838] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Looking up key:
+
+[11:30:56.838] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Table 'tbl_basic143': miss
+[11:30:56.838] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Action entry is basic143 - 
+[11:30:56.838] [bmv2] [T] [thread 11926] [11.0] [cxt 0] Action basic143
+[11:30:56.839] [bmv2] [T] [thread 11926] [11.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:30:56.839] [bmv2] [T] [thread 11926] [11.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 11
+[11:30:56.839] [bmv2] [T] [thread 11926] [11.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:30:56.839] [bmv2] [T] [thread 11926] [11.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:30:56.839] [bmv2] [T] [thread 11926] [11.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 12
+[11:30:56.839] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Pipeline 'egress': end
+[11:30:56.839] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Deparser 'deparser': start
+[11:30:56.839] [bmv2] [T] [thread 11926] [11.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:30:56.839] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Deparsing header 'ethernet'
+[11:30:56.839] [bmv2] [D] [thread 11926] [11.0] [cxt 0] Deparser 'deparser': end
+[11:30:56.839] [bmv2] [D] [thread 11930] [11.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:31:23.426] [bmv2] [D] [thread 11925] [12.0] [cxt 0] Processing packet received on port 2
+[11:31:23.427] [bmv2] [D] [thread 11925] [12.0] [cxt 0] Parser 'parser': start
+[11:31:23.427] [bmv2] [D] [thread 11925] [12.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:31:23.427] [bmv2] [D] [thread 11925] [12.0] [cxt 0] Extracting header 'ethernet'
+[11:31:23.428] [bmv2] [D] [thread 11925] [12.0] [cxt 0] Parser state 'start': key is 86dd
+[11:31:23.428] [bmv2] [T] [thread 11925] [12.0] [cxt 0] Bytes parsed: 14
+[11:31:23.428] [bmv2] [D] [thread 11925] [12.0] [cxt 0] Parser 'parser': end
+[11:31:23.429] [bmv2] [D] [thread 11925] [12.0] [cxt 0] Pipeline 'ingress': start
+[11:31:23.429] [bmv2] [T] [thread 11925] [12.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:31:23.430] [bmv2] [D] [thread 11925] [12.0] [cxt 0] Pipeline 'ingress': end
+[11:31:23.430] [bmv2] [D] [thread 11925] [12.0] [cxt 0] Egress port is 0
+[11:31:23.431] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Pipeline 'egress': start
+[11:31:23.431] [bmv2] [T] [thread 11926] [12.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:31:23.432] [bmv2] [T] [thread 11926] [12.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:31:23.432] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Looking up key:
+
+[11:31:23.432] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:31:23.433] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:31:23.433] [bmv2] [T] [thread 11926] [12.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:31:23.434] [bmv2] [T] [thread 11926] [12.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:31:23.434] [bmv2] [T] [thread 11926] [12.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:31:23.435] [bmv2] [T] [thread 11926] [12.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:31:23.435] [bmv2] [T] [thread 11926] [12.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:31:23.435] [bmv2] [T] [thread 11926] [12.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:31:23.436] [bmv2] [T] [thread 11926] [12.0] [cxt 0] Applying table 'tbl_basic143'
+[11:31:23.436] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Looking up key:
+
+[11:31:23.436] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Table 'tbl_basic143': miss
+[11:31:23.437] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Action entry is basic143 - 
+[11:31:23.437] [bmv2] [T] [thread 11926] [12.0] [cxt 0] Action basic143
+[11:31:23.438] [bmv2] [T] [thread 11926] [12.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:31:23.438] [bmv2] [T] [thread 11926] [12.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 12
+[11:31:23.438] [bmv2] [T] [thread 11926] [12.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:31:23.438] [bmv2] [T] [thread 11926] [12.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:31:23.439] [bmv2] [T] [thread 11926] [12.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 13
+[11:31:23.439] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Pipeline 'egress': end
+[11:31:23.440] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Deparser 'deparser': start
+[11:31:23.440] [bmv2] [T] [thread 11926] [12.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:31:23.440] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Deparsing header 'ethernet'
+[11:31:23.442] [bmv2] [D] [thread 11926] [12.0] [cxt 0] Deparser 'deparser': end
+[11:31:23.442] [bmv2] [D] [thread 11930] [12.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:31:31.616] [bmv2] [D] [thread 11925] [13.0] [cxt 0] Processing packet received on port 1
+[11:31:31.616] [bmv2] [D] [thread 11925] [13.0] [cxt 0] Parser 'parser': start
+[11:31:31.616] [bmv2] [D] [thread 11925] [13.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:31:31.617] [bmv2] [D] [thread 11925] [13.0] [cxt 0] Extracting header 'ethernet'
+[11:31:31.617] [bmv2] [D] [thread 11925] [13.0] [cxt 0] Parser state 'start': key is 86dd
+[11:31:31.617] [bmv2] [T] [thread 11925] [13.0] [cxt 0] Bytes parsed: 14
+[11:31:31.618] [bmv2] [D] [thread 11925] [13.0] [cxt 0] Parser 'parser': end
+[11:31:31.619] [bmv2] [D] [thread 11925] [13.0] [cxt 0] Pipeline 'ingress': start
+[11:31:31.619] [bmv2] [T] [thread 11925] [13.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:31:31.620] [bmv2] [D] [thread 11925] [13.0] [cxt 0] Pipeline 'ingress': end
+[11:31:31.620] [bmv2] [D] [thread 11925] [13.0] [cxt 0] Egress port is 0
+[11:31:31.621] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Pipeline 'egress': start
+[11:31:31.621] [bmv2] [T] [thread 11926] [13.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:31:31.623] [bmv2] [T] [thread 11926] [13.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:31:31.625] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Looking up key:
+
+[11:31:31.626] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:31:31.627] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:31:31.627] [bmv2] [T] [thread 11926] [13.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:31:31.627] [bmv2] [T] [thread 11926] [13.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:31:31.627] [bmv2] [T] [thread 11926] [13.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:31:31.627] [bmv2] [T] [thread 11926] [13.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:31:31.627] [bmv2] [T] [thread 11926] [13.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:31:31.628] [bmv2] [T] [thread 11926] [13.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:31:31.628] [bmv2] [T] [thread 11926] [13.0] [cxt 0] Applying table 'tbl_basic143'
+[11:31:31.621] [bmv2] [D] [thread 11925] [14.0] [cxt 0] Processing packet received on port 2
+[11:31:31.629] [bmv2] [D] [thread 11925] [14.0] [cxt 0] Parser 'parser': start
+[11:31:31.630] [bmv2] [D] [thread 11925] [14.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:31:31.630] [bmv2] [D] [thread 11925] [14.0] [cxt 0] Extracting header 'ethernet'
+[11:31:31.630] [bmv2] [D] [thread 11925] [14.0] [cxt 0] Parser state 'start': key is 86dd
+[11:31:31.630] [bmv2] [T] [thread 11925] [14.0] [cxt 0] Bytes parsed: 14
+[11:31:31.630] [bmv2] [D] [thread 11925] [14.0] [cxt 0] Parser 'parser': end
+[11:31:31.630] [bmv2] [D] [thread 11925] [14.0] [cxt 0] Pipeline 'ingress': start
+[11:31:31.630] [bmv2] [T] [thread 11925] [14.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:31:31.631] [bmv2] [D] [thread 11925] [14.0] [cxt 0] Pipeline 'ingress': end
+[11:31:31.631] [bmv2] [D] [thread 11925] [14.0] [cxt 0] Egress port is 0
+[11:31:31.631] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Looking up key:
+
+[11:31:31.631] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Table 'tbl_basic143': miss
+[11:31:31.631] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Action entry is basic143 - 
+[11:31:31.632] [bmv2] [T] [thread 11926] [13.0] [cxt 0] Action basic143
+[11:31:31.632] [bmv2] [T] [thread 11926] [13.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:31:31.632] [bmv2] [T] [thread 11926] [13.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 13
+[11:31:31.632] [bmv2] [T] [thread 11926] [13.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:31:31.632] [bmv2] [T] [thread 11926] [13.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:31:31.632] [bmv2] [T] [thread 11926] [13.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 14
+[11:31:31.632] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Pipeline 'egress': end
+[11:31:31.632] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Deparser 'deparser': start
+[11:31:31.632] [bmv2] [T] [thread 11926] [13.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:31:31.632] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Deparsing header 'ethernet'
+[11:31:31.633] [bmv2] [D] [thread 11926] [13.0] [cxt 0] Deparser 'deparser': end
+[11:31:31.633] [bmv2] [D] [thread 11930] [13.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:31:31.633] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Pipeline 'egress': start
+[11:31:31.634] [bmv2] [T] [thread 11926] [14.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:31:31.634] [bmv2] [T] [thread 11926] [14.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:31:31.634] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Looking up key:
+
+[11:31:31.634] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:31:31.634] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:31:31.634] [bmv2] [T] [thread 11926] [14.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:31:31.634] [bmv2] [T] [thread 11926] [14.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:31:31.634] [bmv2] [T] [thread 11926] [14.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:31:31.634] [bmv2] [T] [thread 11926] [14.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:31:31.634] [bmv2] [T] [thread 11926] [14.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:31:31.634] [bmv2] [T] [thread 11926] [14.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:31:31.634] [bmv2] [T] [thread 11926] [14.0] [cxt 0] Applying table 'tbl_basic143'
+[11:31:31.635] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Looking up key:
+
+[11:31:31.635] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Table 'tbl_basic143': miss
+[11:31:31.635] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Action entry is basic143 - 
+[11:31:31.635] [bmv2] [T] [thread 11926] [14.0] [cxt 0] Action basic143
+[11:31:31.635] [bmv2] [T] [thread 11926] [14.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:31:31.635] [bmv2] [T] [thread 11926] [14.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 14
+[11:31:31.635] [bmv2] [T] [thread 11926] [14.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:31:31.635] [bmv2] [T] [thread 11926] [14.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:31:31.636] [bmv2] [T] [thread 11926] [14.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 15
+[11:31:31.636] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Pipeline 'egress': end
+[11:31:31.636] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Deparser 'deparser': start
+[11:31:31.637] [bmv2] [T] [thread 11926] [14.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:31:31.637] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Deparsing header 'ethernet'
+[11:31:31.637] [bmv2] [D] [thread 11926] [14.0] [cxt 0] Deparser 'deparser': end
+[11:31:31.638] [bmv2] [D] [thread 11930] [14.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:31:33.664] [bmv2] [D] [thread 11925] [15.0] [cxt 0] Processing packet received on port 1
+[11:31:33.665] [bmv2] [D] [thread 11925] [15.0] [cxt 0] Parser 'parser': start
+[11:31:33.665] [bmv2] [D] [thread 11925] [15.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:31:33.666] [bmv2] [D] [thread 11925] [15.0] [cxt 0] Extracting header 'ethernet'
+[11:31:33.666] [bmv2] [D] [thread 11925] [15.0] [cxt 0] Parser state 'start': key is 86dd
+[11:31:33.667] [bmv2] [T] [thread 11925] [15.0] [cxt 0] Bytes parsed: 14
+[11:31:33.668] [bmv2] [D] [thread 11925] [15.0] [cxt 0] Parser 'parser': end
+[11:31:33.668] [bmv2] [D] [thread 11925] [15.0] [cxt 0] Pipeline 'ingress': start
+[11:31:33.668] [bmv2] [T] [thread 11925] [15.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:31:33.669] [bmv2] [D] [thread 11925] [15.0] [cxt 0] Pipeline 'ingress': end
+[11:31:33.669] [bmv2] [D] [thread 11925] [15.0] [cxt 0] Egress port is 0
+[11:31:33.669] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Pipeline 'egress': start
+[11:31:33.670] [bmv2] [T] [thread 11926] [15.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:31:33.671] [bmv2] [T] [thread 11926] [15.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:31:33.671] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Looking up key:
+
+[11:31:33.674] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:31:33.674] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:31:33.674] [bmv2] [T] [thread 11926] [15.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:31:33.675] [bmv2] [T] [thread 11926] [15.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:31:33.675] [bmv2] [T] [thread 11926] [15.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:31:33.675] [bmv2] [T] [thread 11926] [15.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:31:33.676] [bmv2] [T] [thread 11926] [15.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:31:33.676] [bmv2] [T] [thread 11926] [15.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:31:33.677] [bmv2] [T] [thread 11926] [15.0] [cxt 0] Applying table 'tbl_basic143'
+[11:31:33.677] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Looking up key:
+
+[11:31:33.678] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Table 'tbl_basic143': miss
+[11:31:33.678] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Action entry is basic143 - 
+[11:31:33.678] [bmv2] [T] [thread 11926] [15.0] [cxt 0] Action basic143
+[11:31:33.678] [bmv2] [T] [thread 11926] [15.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:31:33.679] [bmv2] [T] [thread 11926] [15.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 15
+[11:31:33.679] [bmv2] [T] [thread 11926] [15.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:31:33.679] [bmv2] [T] [thread 11926] [15.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:31:33.679] [bmv2] [T] [thread 11926] [15.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 16
+[11:31:33.679] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Pipeline 'egress': end
+[11:31:33.679] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Deparser 'deparser': start
+[11:31:33.679] [bmv2] [T] [thread 11926] [15.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:31:33.679] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Deparsing header 'ethernet'
+[11:31:33.679] [bmv2] [D] [thread 11926] [15.0] [cxt 0] Deparser 'deparser': end
+[11:31:33.680] [bmv2] [D] [thread 11930] [15.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:32:24.866] [bmv2] [D] [thread 11925] [16.0] [cxt 0] Processing packet received on port 2
+[11:32:24.868] [bmv2] [D] [thread 11925] [16.0] [cxt 0] Parser 'parser': start
+[11:32:24.868] [bmv2] [D] [thread 11925] [16.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:32:24.868] [bmv2] [D] [thread 11925] [16.0] [cxt 0] Extracting header 'ethernet'
+[11:32:24.868] [bmv2] [D] [thread 11925] [16.0] [cxt 0] Parser state 'start': key is 86dd
+[11:32:24.868] [bmv2] [T] [thread 11925] [16.0] [cxt 0] Bytes parsed: 14
+[11:32:24.869] [bmv2] [D] [thread 11925] [16.0] [cxt 0] Parser 'parser': end
+[11:32:24.870] [bmv2] [D] [thread 11925] [16.0] [cxt 0] Pipeline 'ingress': start
+[11:32:24.870] [bmv2] [T] [thread 11925] [16.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:32:24.870] [bmv2] [D] [thread 11925] [16.0] [cxt 0] Pipeline 'ingress': end
+[11:32:24.871] [bmv2] [D] [thread 11925] [16.0] [cxt 0] Egress port is 0
+[11:32:24.873] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Pipeline 'egress': start
+[11:32:24.873] [bmv2] [T] [thread 11926] [16.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:32:24.874] [bmv2] [T] [thread 11926] [16.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:32:24.874] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Looking up key:
+
+[11:32:24.874] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:32:24.875] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:32:24.875] [bmv2] [T] [thread 11926] [16.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:32:24.876] [bmv2] [T] [thread 11926] [16.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:32:24.876] [bmv2] [T] [thread 11926] [16.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:32:24.878] [bmv2] [T] [thread 11926] [16.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:32:24.878] [bmv2] [T] [thread 11926] [16.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:32:24.878] [bmv2] [T] [thread 11926] [16.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:32:24.879] [bmv2] [T] [thread 11926] [16.0] [cxt 0] Applying table 'tbl_basic143'
+[11:32:24.879] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Looking up key:
+
+[11:32:24.879] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Table 'tbl_basic143': miss
+[11:32:24.879] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Action entry is basic143 - 
+[11:32:24.879] [bmv2] [T] [thread 11926] [16.0] [cxt 0] Action basic143
+[11:32:24.879] [bmv2] [T] [thread 11926] [16.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:32:24.880] [bmv2] [T] [thread 11926] [16.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 16
+[11:32:24.880] [bmv2] [T] [thread 11926] [16.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:32:24.880] [bmv2] [T] [thread 11926] [16.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:32:24.880] [bmv2] [T] [thread 11926] [16.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 17
+[11:32:24.881] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Pipeline 'egress': end
+[11:32:24.881] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Deparser 'deparser': start
+[11:32:24.881] [bmv2] [T] [thread 11926] [16.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:32:24.882] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Deparsing header 'ethernet'
+[11:32:24.882] [bmv2] [D] [thread 11926] [16.0] [cxt 0] Deparser 'deparser': end
+[11:32:24.882] [bmv2] [D] [thread 11930] [16.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:32:39.200] [bmv2] [D] [thread 11925] [17.0] [cxt 0] Processing packet received on port 2
+[11:32:39.201] [bmv2] [D] [thread 11925] [17.0] [cxt 0] Parser 'parser': start
+[11:32:39.201] [bmv2] [D] [thread 11925] [17.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:32:39.202] [bmv2] [D] [thread 11925] [17.0] [cxt 0] Extracting header 'ethernet'
+[11:32:39.202] [bmv2] [D] [thread 11925] [17.0] [cxt 0] Parser state 'start': key is 86dd
+[11:32:39.203] [bmv2] [T] [thread 11925] [17.0] [cxt 0] Bytes parsed: 14
+[11:32:39.204] [bmv2] [D] [thread 11925] [17.0] [cxt 0] Parser 'parser': end
+[11:32:39.204] [bmv2] [D] [thread 11925] [17.0] [cxt 0] Pipeline 'ingress': start
+[11:32:39.204] [bmv2] [T] [thread 11925] [17.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:32:39.204] [bmv2] [D] [thread 11925] [17.0] [cxt 0] Pipeline 'ingress': end
+[11:32:39.204] [bmv2] [D] [thread 11925] [17.0] [cxt 0] Egress port is 0
+[11:32:39.204] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Pipeline 'egress': start
+[11:32:39.204] [bmv2] [T] [thread 11926] [17.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:32:39.205] [bmv2] [T] [thread 11926] [17.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:32:39.205] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Looking up key:
+
+[11:32:39.205] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:32:39.205] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:32:39.205] [bmv2] [T] [thread 11926] [17.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:32:39.205] [bmv2] [T] [thread 11926] [17.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:32:39.205] [bmv2] [T] [thread 11926] [17.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:32:39.205] [bmv2] [T] [thread 11926] [17.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:32:39.205] [bmv2] [T] [thread 11926] [17.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:32:39.205] [bmv2] [T] [thread 11926] [17.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:32:39.205] [bmv2] [T] [thread 11926] [17.0] [cxt 0] Applying table 'tbl_basic143'
+[11:32:39.205] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Looking up key:
+
+[11:32:39.205] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Table 'tbl_basic143': miss
+[11:32:39.206] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Action entry is basic143 - 
+[11:32:39.206] [bmv2] [T] [thread 11926] [17.0] [cxt 0] Action basic143
+[11:32:39.206] [bmv2] [T] [thread 11926] [17.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:32:39.206] [bmv2] [T] [thread 11926] [17.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 17
+[11:32:39.206] [bmv2] [T] [thread 11926] [17.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:32:39.206] [bmv2] [T] [thread 11926] [17.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:32:39.206] [bmv2] [T] [thread 11926] [17.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 18
+[11:32:39.206] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Pipeline 'egress': end
+[11:32:39.206] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Deparser 'deparser': start
+[11:32:39.206] [bmv2] [T] [thread 11926] [17.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:32:39.206] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Deparsing header 'ethernet'
+[11:32:39.206] [bmv2] [D] [thread 11926] [17.0] [cxt 0] Deparser 'deparser': end
+[11:32:39.206] [bmv2] [D] [thread 11930] [17.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:32:43.297] [bmv2] [D] [thread 11925] [18.0] [cxt 0] Processing packet received on port 1
+[11:32:43.298] [bmv2] [D] [thread 11925] [18.0] [cxt 0] Parser 'parser': start
+[11:32:43.299] [bmv2] [D] [thread 11925] [18.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:32:43.299] [bmv2] [D] [thread 11925] [18.0] [cxt 0] Extracting header 'ethernet'
+[11:32:43.300] [bmv2] [D] [thread 11925] [18.0] [cxt 0] Parser state 'start': key is 86dd
+[11:32:43.301] [bmv2] [T] [thread 11925] [18.0] [cxt 0] Bytes parsed: 14
+[11:32:43.301] [bmv2] [D] [thread 11925] [18.0] [cxt 0] Parser 'parser': end
+[11:32:43.302] [bmv2] [D] [thread 11925] [18.0] [cxt 0] Pipeline 'ingress': start
+[11:32:43.303] [bmv2] [T] [thread 11925] [18.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:32:43.303] [bmv2] [D] [thread 11925] [18.0] [cxt 0] Pipeline 'ingress': end
+[11:32:43.303] [bmv2] [D] [thread 11925] [18.0] [cxt 0] Egress port is 0
+[11:32:43.304] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Pipeline 'egress': start
+[11:32:43.305] [bmv2] [T] [thread 11926] [18.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:32:43.305] [bmv2] [T] [thread 11926] [18.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:32:43.306] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Looking up key:
+
+[11:32:43.306] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:32:43.306] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:32:43.306] [bmv2] [T] [thread 11926] [18.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:32:43.307] [bmv2] [T] [thread 11926] [18.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:32:43.307] [bmv2] [T] [thread 11926] [18.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:32:43.308] [bmv2] [T] [thread 11926] [18.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:32:43.308] [bmv2] [T] [thread 11926] [18.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:32:43.308] [bmv2] [T] [thread 11926] [18.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:32:43.310] [bmv2] [T] [thread 11926] [18.0] [cxt 0] Applying table 'tbl_basic143'
+[11:32:43.310] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Looking up key:
+
+[11:32:43.311] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Table 'tbl_basic143': miss
+[11:32:43.312] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Action entry is basic143 - 
+[11:32:43.312] [bmv2] [T] [thread 11926] [18.0] [cxt 0] Action basic143
+[11:32:43.313] [bmv2] [T] [thread 11926] [18.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:32:43.313] [bmv2] [T] [thread 11926] [18.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 18
+[11:32:43.314] [bmv2] [T] [thread 11926] [18.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:32:43.315] [bmv2] [T] [thread 11926] [18.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:32:43.315] [bmv2] [T] [thread 11926] [18.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 19
+[11:32:43.316] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Pipeline 'egress': end
+[11:32:43.316] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Deparser 'deparser': start
+[11:32:43.316] [bmv2] [T] [thread 11926] [18.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:32:43.305] [bmv2] [D] [thread 11925] [19.0] [cxt 0] Processing packet received on port 1
+[11:32:43.317] [bmv2] [D] [thread 11925] [19.0] [cxt 0] Parser 'parser': start
+[11:32:43.317] [bmv2] [D] [thread 11925] [19.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:32:43.318] [bmv2] [D] [thread 11925] [19.0] [cxt 0] Extracting header 'ethernet'
+[11:32:43.317] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Deparsing header 'ethernet'
+[11:32:43.319] [bmv2] [D] [thread 11926] [18.0] [cxt 0] Deparser 'deparser': end
+[11:32:43.319] [bmv2] [D] [thread 11930] [18.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:32:43.319] [bmv2] [D] [thread 11925] [19.0] [cxt 0] Parser state 'start': key is 86dd
+[11:32:43.319] [bmv2] [T] [thread 11925] [19.0] [cxt 0] Bytes parsed: 14
+[11:32:43.320] [bmv2] [D] [thread 11925] [19.0] [cxt 0] Parser 'parser': end
+[11:32:43.320] [bmv2] [D] [thread 11925] [19.0] [cxt 0] Pipeline 'ingress': start
+[11:32:43.320] [bmv2] [T] [thread 11925] [19.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:32:43.321] [bmv2] [D] [thread 11925] [19.0] [cxt 0] Pipeline 'ingress': end
+[11:32:43.321] [bmv2] [D] [thread 11925] [19.0] [cxt 0] Egress port is 0
+[11:32:43.321] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Pipeline 'egress': start
+[11:32:43.321] [bmv2] [T] [thread 11926] [19.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:32:43.322] [bmv2] [T] [thread 11926] [19.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:32:43.322] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Looking up key:
+
+[11:32:43.322] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:32:43.323] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:32:43.323] [bmv2] [T] [thread 11926] [19.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:32:43.323] [bmv2] [T] [thread 11926] [19.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:32:43.323] [bmv2] [T] [thread 11926] [19.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:32:43.324] [bmv2] [T] [thread 11926] [19.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:32:43.324] [bmv2] [T] [thread 11926] [19.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:32:43.324] [bmv2] [T] [thread 11926] [19.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:32:43.324] [bmv2] [T] [thread 11926] [19.0] [cxt 0] Applying table 'tbl_basic143'
+[11:32:43.324] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Looking up key:
+
+[11:32:43.325] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Table 'tbl_basic143': miss
+[11:32:43.325] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Action entry is basic143 - 
+[11:32:43.325] [bmv2] [T] [thread 11926] [19.0] [cxt 0] Action basic143
+[11:32:43.325] [bmv2] [T] [thread 11926] [19.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:32:43.326] [bmv2] [T] [thread 11926] [19.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 19
+[11:32:43.326] [bmv2] [T] [thread 11926] [19.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:32:43.326] [bmv2] [T] [thread 11926] [19.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:32:43.326] [bmv2] [T] [thread 11926] [19.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 20
+[11:32:43.326] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Pipeline 'egress': end
+[11:32:43.327] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Deparser 'deparser': start
+[11:32:43.327] [bmv2] [T] [thread 11926] [19.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:32:43.327] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Deparsing header 'ethernet'
+[11:32:43.328] [bmv2] [D] [thread 11926] [19.0] [cxt 0] Deparser 'deparser': end
+[11:32:43.328] [bmv2] [D] [thread 11930] [19.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:34:29.802] [bmv2] [D] [thread 11925] [20.0] [cxt 0] Processing packet received on port 2
+[11:34:29.803] [bmv2] [D] [thread 11925] [20.0] [cxt 0] Parser 'parser': start
+[11:34:29.803] [bmv2] [D] [thread 11925] [20.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:34:29.808] [bmv2] [D] [thread 11925] [20.0] [cxt 0] Extracting header 'ethernet'
+[11:34:29.809] [bmv2] [D] [thread 11925] [20.0] [cxt 0] Parser state 'start': key is 86dd
+[11:34:29.811] [bmv2] [T] [thread 11925] [20.0] [cxt 0] Bytes parsed: 14
+[11:34:29.811] [bmv2] [D] [thread 11925] [20.0] [cxt 0] Parser 'parser': end
+[11:34:29.812] [bmv2] [D] [thread 11925] [20.0] [cxt 0] Pipeline 'ingress': start
+[11:34:29.812] [bmv2] [T] [thread 11925] [20.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:34:29.813] [bmv2] [D] [thread 11925] [20.0] [cxt 0] Pipeline 'ingress': end
+[11:34:29.813] [bmv2] [D] [thread 11925] [20.0] [cxt 0] Egress port is 0
+[11:34:29.814] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Pipeline 'egress': start
+[11:34:29.814] [bmv2] [T] [thread 11926] [20.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:34:29.814] [bmv2] [T] [thread 11926] [20.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:34:29.815] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Looking up key:
+
+[11:34:29.815] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:34:29.815] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:34:29.815] [bmv2] [T] [thread 11926] [20.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:34:29.815] [bmv2] [T] [thread 11926] [20.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:34:29.816] [bmv2] [T] [thread 11926] [20.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:34:29.816] [bmv2] [T] [thread 11926] [20.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:34:29.816] [bmv2] [T] [thread 11926] [20.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:34:29.816] [bmv2] [T] [thread 11926] [20.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:34:29.816] [bmv2] [T] [thread 11926] [20.0] [cxt 0] Applying table 'tbl_basic143'
+[11:34:29.816] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Looking up key:
+
+[11:34:29.816] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Table 'tbl_basic143': miss
+[11:34:29.816] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Action entry is basic143 - 
+[11:34:29.816] [bmv2] [T] [thread 11926] [20.0] [cxt 0] Action basic143
+[11:34:29.817] [bmv2] [T] [thread 11926] [20.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:34:29.817] [bmv2] [T] [thread 11926] [20.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 20
+[11:34:29.817] [bmv2] [T] [thread 11926] [20.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:34:29.817] [bmv2] [T] [thread 11926] [20.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:34:29.817] [bmv2] [T] [thread 11926] [20.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 21
+[11:34:29.817] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Pipeline 'egress': end
+[11:34:29.817] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Deparser 'deparser': start
+[11:34:29.817] [bmv2] [T] [thread 11926] [20.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:34:29.817] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Deparsing header 'ethernet'
+[11:34:29.818] [bmv2] [D] [thread 11926] [20.0] [cxt 0] Deparser 'deparser': end
+[11:34:29.818] [bmv2] [D] [thread 11930] [20.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:34:56.421] [bmv2] [D] [thread 11925] [21.0] [cxt 0] Processing packet received on port 2
+[11:34:56.421] [bmv2] [D] [thread 11925] [21.0] [cxt 0] Parser 'parser': start
+[11:34:56.422] [bmv2] [D] [thread 11925] [21.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:34:56.422] [bmv2] [D] [thread 11925] [21.0] [cxt 0] Extracting header 'ethernet'
+[11:34:56.422] [bmv2] [D] [thread 11925] [21.0] [cxt 0] Parser state 'start': key is 86dd
+[11:34:56.422] [bmv2] [T] [thread 11925] [21.0] [cxt 0] Bytes parsed: 14
+[11:34:56.423] [bmv2] [D] [thread 11925] [21.0] [cxt 0] Parser 'parser': end
+[11:34:56.424] [bmv2] [D] [thread 11925] [21.0] [cxt 0] Pipeline 'ingress': start
+[11:34:56.424] [bmv2] [T] [thread 11925] [21.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:34:56.424] [bmv2] [D] [thread 11925] [21.0] [cxt 0] Pipeline 'ingress': end
+[11:34:56.425] [bmv2] [D] [thread 11925] [21.0] [cxt 0] Egress port is 0
+[11:34:56.425] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Pipeline 'egress': start
+[11:34:56.425] [bmv2] [T] [thread 11926] [21.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:34:56.425] [bmv2] [T] [thread 11926] [21.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:34:56.426] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Looking up key:
+
+[11:34:56.426] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:34:56.426] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:34:56.426] [bmv2] [T] [thread 11926] [21.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:34:56.426] [bmv2] [T] [thread 11926] [21.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:34:56.426] [bmv2] [T] [thread 11926] [21.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:34:56.427] [bmv2] [T] [thread 11926] [21.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:34:56.427] [bmv2] [T] [thread 11926] [21.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:34:56.427] [bmv2] [T] [thread 11926] [21.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:34:56.428] [bmv2] [T] [thread 11926] [21.0] [cxt 0] Applying table 'tbl_basic143'
+[11:34:56.428] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Looking up key:
+
+[11:34:56.428] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Table 'tbl_basic143': miss
+[11:34:56.429] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Action entry is basic143 - 
+[11:34:56.429] [bmv2] [T] [thread 11926] [21.0] [cxt 0] Action basic143
+[11:34:56.429] [bmv2] [T] [thread 11926] [21.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:34:56.430] [bmv2] [T] [thread 11926] [21.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 21
+[11:34:56.430] [bmv2] [T] [thread 11926] [21.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:34:56.430] [bmv2] [T] [thread 11926] [21.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:34:56.431] [bmv2] [T] [thread 11926] [21.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 22
+[11:34:56.431] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Pipeline 'egress': end
+[11:34:56.432] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Deparser 'deparser': start
+[11:34:56.432] [bmv2] [T] [thread 11926] [21.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:34:56.432] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Deparsing header 'ethernet'
+[11:34:56.433] [bmv2] [D] [thread 11926] [21.0] [cxt 0] Deparser 'deparser': end
+[11:34:56.433] [bmv2] [D] [thread 11930] [21.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:35:12.800] [bmv2] [D] [thread 11925] [22.0] [cxt 0] Processing packet received on port 1
+[11:35:12.800] [bmv2] [D] [thread 11925] [22.0] [cxt 0] Parser 'parser': start
+[11:35:12.801] [bmv2] [D] [thread 11925] [22.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:35:12.803] [bmv2] [D] [thread 11925] [22.0] [cxt 0] Extracting header 'ethernet'
+[11:35:12.804] [bmv2] [D] [thread 11925] [22.0] [cxt 0] Parser state 'start': key is 86dd
+[11:35:12.804] [bmv2] [T] [thread 11925] [22.0] [cxt 0] Bytes parsed: 14
+[11:35:12.805] [bmv2] [D] [thread 11925] [22.0] [cxt 0] Parser 'parser': end
+[11:35:12.805] [bmv2] [D] [thread 11925] [22.0] [cxt 0] Pipeline 'ingress': start
+[11:35:12.805] [bmv2] [T] [thread 11925] [22.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:35:12.806] [bmv2] [D] [thread 11925] [22.0] [cxt 0] Pipeline 'ingress': end
+[11:35:12.807] [bmv2] [D] [thread 11925] [22.0] [cxt 0] Egress port is 0
+[11:35:12.807] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Pipeline 'egress': start
+[11:35:12.807] [bmv2] [T] [thread 11926] [22.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:35:12.807] [bmv2] [T] [thread 11926] [22.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:35:12.808] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Looking up key:
+
+[11:35:12.808] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:35:12.808] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:35:12.809] [bmv2] [T] [thread 11926] [22.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:35:12.809] [bmv2] [T] [thread 11926] [22.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:35:12.809] [bmv2] [T] [thread 11926] [22.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:35:12.809] [bmv2] [T] [thread 11926] [22.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:35:12.810] [bmv2] [T] [thread 11926] [22.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:35:12.810] [bmv2] [T] [thread 11926] [22.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:35:12.811] [bmv2] [T] [thread 11926] [22.0] [cxt 0] Applying table 'tbl_basic143'
+[11:35:12.811] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Looking up key:
+
+[11:35:12.811] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Table 'tbl_basic143': miss
+[11:35:12.811] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Action entry is basic143 - 
+[11:35:12.812] [bmv2] [T] [thread 11926] [22.0] [cxt 0] Action basic143
+[11:35:12.812] [bmv2] [T] [thread 11926] [22.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:35:12.812] [bmv2] [T] [thread 11926] [22.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 22
+[11:35:12.812] [bmv2] [T] [thread 11926] [22.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:35:12.813] [bmv2] [T] [thread 11926] [22.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:35:12.813] [bmv2] [T] [thread 11926] [22.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 23
+[11:35:12.813] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Pipeline 'egress': end
+[11:35:12.813] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Deparser 'deparser': start
+[11:35:12.813] [bmv2] [T] [thread 11926] [22.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:35:12.813] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Deparsing header 'ethernet'
+[11:35:12.813] [bmv2] [D] [thread 11926] [22.0] [cxt 0] Deparser 'deparser': end
+[11:35:12.813] [bmv2] [D] [thread 11930] [22.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:35:12.808] [bmv2] [D] [thread 11925] [23.0] [cxt 0] Processing packet received on port 1
+[11:35:12.814] [bmv2] [D] [thread 11925] [23.0] [cxt 0] Parser 'parser': start
+[11:35:12.814] [bmv2] [D] [thread 11925] [23.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:35:12.815] [bmv2] [D] [thread 11925] [23.0] [cxt 0] Extracting header 'ethernet'
+[11:35:12.815] [bmv2] [D] [thread 11925] [23.0] [cxt 0] Parser state 'start': key is 86dd
+[11:35:12.815] [bmv2] [T] [thread 11925] [23.0] [cxt 0] Bytes parsed: 14
+[11:35:12.815] [bmv2] [D] [thread 11925] [23.0] [cxt 0] Parser 'parser': end
+[11:35:12.815] [bmv2] [D] [thread 11925] [23.0] [cxt 0] Pipeline 'ingress': start
+[11:35:12.815] [bmv2] [T] [thread 11925] [23.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:35:12.815] [bmv2] [D] [thread 11925] [23.0] [cxt 0] Pipeline 'ingress': end
+[11:35:12.815] [bmv2] [D] [thread 11925] [23.0] [cxt 0] Egress port is 0
+[11:35:12.815] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Pipeline 'egress': start
+[11:35:12.816] [bmv2] [T] [thread 11926] [23.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:35:12.816] [bmv2] [T] [thread 11926] [23.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:35:12.816] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Looking up key:
+
+[11:35:12.816] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:35:12.816] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:35:12.816] [bmv2] [T] [thread 11926] [23.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:35:12.816] [bmv2] [T] [thread 11926] [23.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:35:12.816] [bmv2] [T] [thread 11926] [23.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:35:12.816] [bmv2] [T] [thread 11926] [23.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:35:12.817] [bmv2] [T] [thread 11926] [23.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:35:12.817] [bmv2] [T] [thread 11926] [23.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:35:12.817] [bmv2] [T] [thread 11926] [23.0] [cxt 0] Applying table 'tbl_basic143'
+[11:35:12.817] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Looking up key:
+
+[11:35:12.817] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Table 'tbl_basic143': miss
+[11:35:12.817] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Action entry is basic143 - 
+[11:35:12.818] [bmv2] [T] [thread 11926] [23.0] [cxt 0] Action basic143
+[11:35:12.818] [bmv2] [T] [thread 11926] [23.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:35:12.818] [bmv2] [T] [thread 11926] [23.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 23
+[11:35:12.818] [bmv2] [T] [thread 11926] [23.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:35:12.818] [bmv2] [T] [thread 11926] [23.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:35:12.819] [bmv2] [T] [thread 11926] [23.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 24
+[11:35:12.819] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Pipeline 'egress': end
+[11:35:12.819] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Deparser 'deparser': start
+[11:35:12.820] [bmv2] [T] [thread 11926] [23.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:35:12.820] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Deparsing header 'ethernet'
+[11:35:12.821] [bmv2] [D] [thread 11926] [23.0] [cxt 0] Deparser 'deparser': end
+[11:35:12.821] [bmv2] [D] [thread 11930] [23.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:38:45.791] [bmv2] [D] [thread 11925] [24.0] [cxt 0] Processing packet received on port 2
+[11:38:45.792] [bmv2] [D] [thread 11925] [24.0] [cxt 0] Parser 'parser': start
+[11:38:45.792] [bmv2] [D] [thread 11925] [24.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:38:45.792] [bmv2] [D] [thread 11925] [24.0] [cxt 0] Extracting header 'ethernet'
+[11:38:45.792] [bmv2] [D] [thread 11925] [24.0] [cxt 0] Parser state 'start': key is 86dd
+[11:38:45.792] [bmv2] [T] [thread 11925] [24.0] [cxt 0] Bytes parsed: 14
+[11:38:45.792] [bmv2] [D] [thread 11925] [24.0] [cxt 0] Parser 'parser': end
+[11:38:45.793] [bmv2] [D] [thread 11925] [24.0] [cxt 0] Pipeline 'ingress': start
+[11:38:45.793] [bmv2] [T] [thread 11925] [24.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:38:45.794] [bmv2] [D] [thread 11925] [24.0] [cxt 0] Pipeline 'ingress': end
+[11:38:45.794] [bmv2] [D] [thread 11925] [24.0] [cxt 0] Egress port is 0
+[11:38:45.795] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Pipeline 'egress': start
+[11:38:45.795] [bmv2] [T] [thread 11926] [24.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:38:45.795] [bmv2] [T] [thread 11926] [24.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:38:45.795] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Looking up key:
+
+[11:38:45.795] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:38:45.795] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:38:45.796] [bmv2] [T] [thread 11926] [24.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:38:45.796] [bmv2] [T] [thread 11926] [24.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:38:45.796] [bmv2] [T] [thread 11926] [24.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:38:45.796] [bmv2] [T] [thread 11926] [24.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:38:45.796] [bmv2] [T] [thread 11926] [24.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:38:45.796] [bmv2] [T] [thread 11926] [24.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:38:45.796] [bmv2] [T] [thread 11926] [24.0] [cxt 0] Applying table 'tbl_basic143'
+[11:38:45.797] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Looking up key:
+
+[11:38:45.797] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Table 'tbl_basic143': miss
+[11:38:45.797] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Action entry is basic143 - 
+[11:38:45.797] [bmv2] [T] [thread 11926] [24.0] [cxt 0] Action basic143
+[11:38:45.797] [bmv2] [T] [thread 11926] [24.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:38:45.797] [bmv2] [T] [thread 11926] [24.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 24
+[11:38:45.797] [bmv2] [T] [thread 11926] [24.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:38:45.797] [bmv2] [T] [thread 11926] [24.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:38:45.798] [bmv2] [T] [thread 11926] [24.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 25
+[11:38:45.798] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Pipeline 'egress': end
+[11:38:45.798] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Deparser 'deparser': start
+[11:38:45.798] [bmv2] [T] [thread 11926] [24.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:38:45.798] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Deparsing header 'ethernet'
+[11:38:45.798] [bmv2] [D] [thread 11926] [24.0] [cxt 0] Deparser 'deparser': end
+[11:38:45.798] [bmv2] [D] [thread 11930] [24.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:39:34.943] [bmv2] [D] [thread 11925] [25.0] [cxt 0] Processing packet received on port 2
+[11:39:34.943] [bmv2] [D] [thread 11925] [25.0] [cxt 0] Parser 'parser': start
+[11:39:34.944] [bmv2] [D] [thread 11925] [25.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:39:34.944] [bmv2] [D] [thread 11925] [25.0] [cxt 0] Extracting header 'ethernet'
+[11:39:34.944] [bmv2] [D] [thread 11925] [25.0] [cxt 0] Parser state 'start': key is 86dd
+[11:39:34.944] [bmv2] [T] [thread 11925] [25.0] [cxt 0] Bytes parsed: 14
+[11:39:34.945] [bmv2] [D] [thread 11925] [25.0] [cxt 0] Parser 'parser': end
+[11:39:34.946] [bmv2] [D] [thread 11925] [25.0] [cxt 0] Pipeline 'ingress': start
+[11:39:34.946] [bmv2] [T] [thread 11925] [25.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:39:34.946] [bmv2] [D] [thread 11925] [25.0] [cxt 0] Pipeline 'ingress': end
+[11:39:34.946] [bmv2] [D] [thread 11925] [25.0] [cxt 0] Egress port is 0
+[11:39:34.946] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Pipeline 'egress': start
+[11:39:34.947] [bmv2] [T] [thread 11926] [25.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:39:34.947] [bmv2] [T] [thread 11926] [25.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:39:34.947] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Looking up key:
+
+[11:39:34.947] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:39:34.947] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:39:34.947] [bmv2] [T] [thread 11926] [25.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:39:34.948] [bmv2] [T] [thread 11926] [25.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:39:34.948] [bmv2] [T] [thread 11926] [25.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:39:34.948] [bmv2] [T] [thread 11926] [25.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:39:34.948] [bmv2] [T] [thread 11926] [25.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:39:34.949] [bmv2] [T] [thread 11926] [25.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:39:34.949] [bmv2] [T] [thread 11926] [25.0] [cxt 0] Applying table 'tbl_basic143'
+[11:39:34.949] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Looking up key:
+
+[11:39:34.949] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Table 'tbl_basic143': miss
+[11:39:34.949] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Action entry is basic143 - 
+[11:39:34.950] [bmv2] [T] [thread 11926] [25.0] [cxt 0] Action basic143
+[11:39:34.950] [bmv2] [T] [thread 11926] [25.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:39:34.950] [bmv2] [T] [thread 11926] [25.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 25
+[11:39:34.950] [bmv2] [T] [thread 11926] [25.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:39:34.950] [bmv2] [T] [thread 11926] [25.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:39:34.950] [bmv2] [T] [thread 11926] [25.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 26
+[11:39:34.951] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Pipeline 'egress': end
+[11:39:34.951] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Deparser 'deparser': start
+[11:39:34.951] [bmv2] [T] [thread 11926] [25.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:39:34.951] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Deparsing header 'ethernet'
+[11:39:34.951] [bmv2] [D] [thread 11926] [25.0] [cxt 0] Deparser 'deparser': end
+[11:39:34.951] [bmv2] [D] [thread 11930] [25.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:39:51.330] [bmv2] [D] [thread 11925] [26.0] [cxt 0] Processing packet received on port 1
+[11:39:51.330] [bmv2] [D] [thread 11925] [26.0] [cxt 0] Parser 'parser': start
+[11:39:51.330] [bmv2] [D] [thread 11925] [26.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:39:51.331] [bmv2] [D] [thread 11925] [26.0] [cxt 0] Extracting header 'ethernet'
+[11:39:51.331] [bmv2] [D] [thread 11925] [26.0] [cxt 0] Parser state 'start': key is 86dd
+[11:39:51.331] [bmv2] [T] [thread 11925] [26.0] [cxt 0] Bytes parsed: 14
+[11:39:51.331] [bmv2] [D] [thread 11925] [26.0] [cxt 0] Parser 'parser': end
+[11:39:51.331] [bmv2] [D] [thread 11925] [26.0] [cxt 0] Pipeline 'ingress': start
+[11:39:51.332] [bmv2] [T] [thread 11925] [26.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:39:51.332] [bmv2] [D] [thread 11925] [26.0] [cxt 0] Pipeline 'ingress': end
+[11:39:51.332] [bmv2] [D] [thread 11925] [26.0] [cxt 0] Egress port is 0
+[11:39:51.332] [bmv2] [D] [thread 11925] [27.0] [cxt 0] Processing packet received on port 1
+[11:39:51.332] [bmv2] [D] [thread 11925] [27.0] [cxt 0] Parser 'parser': start
+[11:39:51.332] [bmv2] [D] [thread 11925] [27.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:39:51.333] [bmv2] [D] [thread 11925] [27.0] [cxt 0] Extracting header 'ethernet'
+[11:39:51.333] [bmv2] [D] [thread 11925] [27.0] [cxt 0] Parser state 'start': key is 86dd
+[11:39:51.333] [bmv2] [T] [thread 11925] [27.0] [cxt 0] Bytes parsed: 14
+[11:39:51.333] [bmv2] [D] [thread 11925] [27.0] [cxt 0] Parser 'parser': end
+[11:39:51.333] [bmv2] [D] [thread 11925] [27.0] [cxt 0] Pipeline 'ingress': start
+[11:39:51.333] [bmv2] [T] [thread 11925] [27.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:39:51.334] [bmv2] [D] [thread 11925] [27.0] [cxt 0] Pipeline 'ingress': end
+[11:39:51.334] [bmv2] [D] [thread 11925] [27.0] [cxt 0] Egress port is 0
+[11:39:51.332] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Pipeline 'egress': start
+[11:39:51.334] [bmv2] [T] [thread 11926] [26.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:39:51.335] [bmv2] [T] [thread 11926] [26.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:39:51.335] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Looking up key:
+
+[11:39:51.335] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:39:51.335] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:39:51.336] [bmv2] [T] [thread 11926] [26.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:39:51.336] [bmv2] [T] [thread 11926] [26.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:39:51.336] [bmv2] [T] [thread 11926] [26.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:39:51.336] [bmv2] [T] [thread 11926] [26.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:39:51.336] [bmv2] [T] [thread 11926] [26.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:39:51.336] [bmv2] [T] [thread 11926] [26.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:39:51.336] [bmv2] [T] [thread 11926] [26.0] [cxt 0] Applying table 'tbl_basic143'
+[11:39:51.336] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Looking up key:
+
+[11:39:51.336] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Table 'tbl_basic143': miss
+[11:39:51.336] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Action entry is basic143 - 
+[11:39:51.336] [bmv2] [T] [thread 11926] [26.0] [cxt 0] Action basic143
+[11:39:51.336] [bmv2] [T] [thread 11926] [26.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:39:51.337] [bmv2] [T] [thread 11926] [26.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 26
+[11:39:51.337] [bmv2] [T] [thread 11926] [26.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:39:51.337] [bmv2] [T] [thread 11926] [26.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:39:51.337] [bmv2] [T] [thread 11926] [26.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 27
+[11:39:51.337] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Pipeline 'egress': end
+[11:39:51.337] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Deparser 'deparser': start
+[11:39:51.337] [bmv2] [T] [thread 11926] [26.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:39:51.338] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Deparsing header 'ethernet'
+[11:39:51.338] [bmv2] [D] [thread 11926] [26.0] [cxt 0] Deparser 'deparser': end
+[11:39:51.338] [bmv2] [D] [thread 11930] [26.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:39:51.338] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Pipeline 'egress': start
+[11:39:51.338] [bmv2] [T] [thread 11926] [27.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:39:51.338] [bmv2] [T] [thread 11926] [27.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:39:51.339] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Looking up key:
+
+[11:39:51.339] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:39:51.339] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:39:51.339] [bmv2] [T] [thread 11926] [27.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:39:51.340] [bmv2] [T] [thread 11926] [27.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:39:51.340] [bmv2] [T] [thread 11926] [27.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:39:51.340] [bmv2] [T] [thread 11926] [27.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:39:51.340] [bmv2] [T] [thread 11926] [27.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:39:51.340] [bmv2] [T] [thread 11926] [27.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:39:51.340] [bmv2] [T] [thread 11926] [27.0] [cxt 0] Applying table 'tbl_basic143'
+[11:39:51.341] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Looking up key:
+
+[11:39:51.341] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Table 'tbl_basic143': miss
+[11:39:51.341] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Action entry is basic143 - 
+[11:39:51.341] [bmv2] [T] [thread 11926] [27.0] [cxt 0] Action basic143
+[11:39:51.341] [bmv2] [T] [thread 11926] [27.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:39:51.342] [bmv2] [T] [thread 11926] [27.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 27
+[11:39:51.342] [bmv2] [T] [thread 11926] [27.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:39:51.342] [bmv2] [T] [thread 11926] [27.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:39:51.343] [bmv2] [T] [thread 11926] [27.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 28
+[11:39:51.343] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Pipeline 'egress': end
+[11:39:51.343] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Deparser 'deparser': start
+[11:39:51.343] [bmv2] [T] [thread 11926] [27.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:39:51.343] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Deparsing header 'ethernet'
+[11:39:51.343] [bmv2] [D] [thread 11926] [27.0] [cxt 0] Deparser 'deparser': end
+[11:39:51.343] [bmv2] [D] [thread 11930] [27.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:46:57.325] [bmv2] [D] [thread 11925] [28.0] [cxt 0] Processing packet received on port 2
+[11:46:57.325] [bmv2] [D] [thread 11925] [28.0] [cxt 0] Parser 'parser': start
+[11:46:57.325] [bmv2] [D] [thread 11925] [28.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:46:57.326] [bmv2] [D] [thread 11925] [28.0] [cxt 0] Extracting header 'ethernet'
+[11:46:57.326] [bmv2] [D] [thread 11925] [28.0] [cxt 0] Parser state 'start': key is 86dd
+[11:46:57.327] [bmv2] [T] [thread 11925] [28.0] [cxt 0] Bytes parsed: 14
+[11:46:57.327] [bmv2] [D] [thread 11925] [28.0] [cxt 0] Parser 'parser': end
+[11:46:57.327] [bmv2] [D] [thread 11925] [28.0] [cxt 0] Pipeline 'ingress': start
+[11:46:57.327] [bmv2] [T] [thread 11925] [28.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:46:57.328] [bmv2] [D] [thread 11925] [28.0] [cxt 0] Pipeline 'ingress': end
+[11:46:57.328] [bmv2] [D] [thread 11925] [28.0] [cxt 0] Egress port is 0
+[11:46:57.328] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Pipeline 'egress': start
+[11:46:57.328] [bmv2] [T] [thread 11926] [28.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:46:57.329] [bmv2] [T] [thread 11926] [28.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:46:57.329] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Looking up key:
+
+[11:46:57.329] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:46:57.329] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:46:57.329] [bmv2] [T] [thread 11926] [28.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:46:57.329] [bmv2] [T] [thread 11926] [28.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:46:57.330] [bmv2] [T] [thread 11926] [28.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:46:57.330] [bmv2] [T] [thread 11926] [28.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:46:57.330] [bmv2] [T] [thread 11926] [28.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:46:57.331] [bmv2] [T] [thread 11926] [28.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:46:57.331] [bmv2] [T] [thread 11926] [28.0] [cxt 0] Applying table 'tbl_basic143'
+[11:46:57.331] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Looking up key:
+
+[11:46:57.331] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Table 'tbl_basic143': miss
+[11:46:57.331] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Action entry is basic143 - 
+[11:46:57.332] [bmv2] [T] [thread 11926] [28.0] [cxt 0] Action basic143
+[11:46:57.332] [bmv2] [T] [thread 11926] [28.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:46:57.332] [bmv2] [T] [thread 11926] [28.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 28
+[11:46:57.333] [bmv2] [T] [thread 11926] [28.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:46:57.333] [bmv2] [T] [thread 11926] [28.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:46:57.333] [bmv2] [T] [thread 11926] [28.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 29
+[11:46:57.333] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Pipeline 'egress': end
+[11:46:57.334] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Deparser 'deparser': start
+[11:46:57.334] [bmv2] [T] [thread 11926] [28.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:46:57.334] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Deparsing header 'ethernet'
+[11:46:57.334] [bmv2] [D] [thread 11926] [28.0] [cxt 0] Deparser 'deparser': end
+[11:46:57.334] [bmv2] [D] [thread 11930] [28.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:49:08.385] [bmv2] [D] [thread 11925] [29.0] [cxt 0] Processing packet received on port 1
+[11:49:08.387] [bmv2] [D] [thread 11925] [29.0] [cxt 0] Parser 'parser': start
+[11:49:08.387] [bmv2] [D] [thread 11925] [29.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:49:08.387] [bmv2] [D] [thread 11925] [29.0] [cxt 0] Extracting header 'ethernet'
+[11:49:08.387] [bmv2] [D] [thread 11925] [29.0] [cxt 0] Parser state 'start': key is 86dd
+[11:49:08.388] [bmv2] [T] [thread 11925] [29.0] [cxt 0] Bytes parsed: 14
+[11:49:08.388] [bmv2] [D] [thread 11925] [29.0] [cxt 0] Parser 'parser': end
+[11:49:08.388] [bmv2] [D] [thread 11925] [29.0] [cxt 0] Pipeline 'ingress': start
+[11:49:08.388] [bmv2] [T] [thread 11925] [29.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:49:08.388] [bmv2] [D] [thread 11925] [29.0] [cxt 0] Pipeline 'ingress': end
+[11:49:08.389] [bmv2] [D] [thread 11925] [29.0] [cxt 0] Egress port is 0
+[11:49:08.389] [bmv2] [D] [thread 11925] [30.0] [cxt 0] Processing packet received on port 2
+[11:49:08.389] [bmv2] [D] [thread 11925] [30.0] [cxt 0] Parser 'parser': start
+[11:49:08.389] [bmv2] [D] [thread 11925] [30.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:49:08.389] [bmv2] [D] [thread 11925] [30.0] [cxt 0] Extracting header 'ethernet'
+[11:49:08.389] [bmv2] [D] [thread 11925] [30.0] [cxt 0] Parser state 'start': key is 86dd
+[11:49:08.390] [bmv2] [T] [thread 11925] [30.0] [cxt 0] Bytes parsed: 14
+[11:49:08.390] [bmv2] [D] [thread 11925] [30.0] [cxt 0] Parser 'parser': end
+[11:49:08.390] [bmv2] [D] [thread 11925] [30.0] [cxt 0] Pipeline 'ingress': start
+[11:49:08.389] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Pipeline 'egress': start
+[11:49:08.390] [bmv2] [T] [thread 11926] [29.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:49:08.391] [bmv2] [T] [thread 11926] [29.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:49:08.391] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Looking up key:
+
+[11:49:08.391] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:49:08.391] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:49:08.391] [bmv2] [T] [thread 11926] [29.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:49:08.391] [bmv2] [T] [thread 11926] [29.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:49:08.392] [bmv2] [T] [thread 11926] [29.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:49:08.392] [bmv2] [T] [thread 11926] [29.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:49:08.393] [bmv2] [T] [thread 11926] [29.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:49:08.393] [bmv2] [T] [thread 11926] [29.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:49:08.393] [bmv2] [T] [thread 11926] [29.0] [cxt 0] Applying table 'tbl_basic143'
+[11:49:08.393] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Looking up key:
+
+[11:49:08.393] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Table 'tbl_basic143': miss
+[11:49:08.393] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Action entry is basic143 - 
+[11:49:08.393] [bmv2] [T] [thread 11926] [29.0] [cxt 0] Action basic143
+[11:49:08.394] [bmv2] [T] [thread 11926] [29.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:49:08.394] [bmv2] [T] [thread 11926] [29.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 29
+[11:49:08.394] [bmv2] [T] [thread 11926] [29.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:49:08.395] [bmv2] [T] [thread 11926] [29.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:49:08.395] [bmv2] [T] [thread 11926] [29.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 30
+[11:49:08.395] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Pipeline 'egress': end
+[11:49:08.398] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Deparser 'deparser': start
+[11:49:08.399] [bmv2] [T] [thread 11926] [29.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:49:08.399] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Deparsing header 'ethernet'
+[11:49:08.399] [bmv2] [D] [thread 11926] [29.0] [cxt 0] Deparser 'deparser': end
+[11:49:08.399] [bmv2] [D] [thread 11930] [29.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:49:08.390] [bmv2] [T] [thread 11925] [30.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:49:08.399] [bmv2] [D] [thread 11925] [30.0] [cxt 0] Pipeline 'ingress': end
+[11:49:08.399] [bmv2] [D] [thread 11925] [30.0] [cxt 0] Egress port is 0
+[11:49:08.399] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Pipeline 'egress': start
+[11:49:08.399] [bmv2] [T] [thread 11926] [30.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:49:08.400] [bmv2] [T] [thread 11926] [30.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:49:08.400] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Looking up key:
+
+[11:49:08.400] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:49:08.400] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:49:08.400] [bmv2] [T] [thread 11926] [30.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:49:08.400] [bmv2] [T] [thread 11926] [30.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:49:08.400] [bmv2] [T] [thread 11926] [30.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:49:08.400] [bmv2] [T] [thread 11926] [30.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:49:08.401] [bmv2] [T] [thread 11926] [30.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:49:08.401] [bmv2] [T] [thread 11926] [30.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:49:08.401] [bmv2] [T] [thread 11926] [30.0] [cxt 0] Applying table 'tbl_basic143'
+[11:49:08.401] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Looking up key:
+
+[11:49:08.401] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Table 'tbl_basic143': miss
+[11:49:08.401] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Action entry is basic143 - 
+[11:49:08.401] [bmv2] [T] [thread 11926] [30.0] [cxt 0] Action basic143
+[11:49:08.401] [bmv2] [T] [thread 11926] [30.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:49:08.401] [bmv2] [T] [thread 11926] [30.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 30
+[11:49:08.401] [bmv2] [T] [thread 11926] [30.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:49:08.402] [bmv2] [T] [thread 11926] [30.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:49:08.402] [bmv2] [T] [thread 11926] [30.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 31
+[11:49:08.402] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Pipeline 'egress': end
+[11:49:08.402] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Deparser 'deparser': start
+[11:49:08.402] [bmv2] [T] [thread 11926] [30.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:49:08.402] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Deparsing header 'ethernet'
+[11:49:08.402] [bmv2] [D] [thread 11926] [30.0] [cxt 0] Deparser 'deparser': end
+[11:49:08.402] [bmv2] [D] [thread 11930] [30.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[11:49:41.154] [bmv2] [D] [thread 11925] [31.0] [cxt 0] Processing packet received on port 1
+[11:49:41.154] [bmv2] [D] [thread 11925] [31.0] [cxt 0] Parser 'parser': start
+[11:49:41.154] [bmv2] [D] [thread 11925] [31.0] [cxt 0] Parser 'parser' entering state 'start'
+[11:49:41.155] [bmv2] [D] [thread 11925] [31.0] [cxt 0] Extracting header 'ethernet'
+[11:49:41.155] [bmv2] [D] [thread 11925] [31.0] [cxt 0] Parser state 'start': key is 86dd
+[11:49:41.155] [bmv2] [T] [thread 11925] [31.0] [cxt 0] Bytes parsed: 14
+[11:49:41.155] [bmv2] [D] [thread 11925] [31.0] [cxt 0] Parser 'parser': end
+[11:49:41.155] [bmv2] [D] [thread 11925] [31.0] [cxt 0] Pipeline 'ingress': start
+[11:49:41.155] [bmv2] [T] [thread 11925] [31.0] [cxt 0] basic.p4(118) Condition "hdr.ipv4.isValid()" (node_2) is false
+[11:49:41.155] [bmv2] [D] [thread 11925] [31.0] [cxt 0] Pipeline 'ingress': end
+[11:49:41.155] [bmv2] [D] [thread 11925] [31.0] [cxt 0] Egress port is 0
+[11:49:41.156] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Pipeline 'egress': start
+[11:49:41.156] [bmv2] [T] [thread 11926] [31.0] [cxt 0] basic.p4(139) Condition "meta.hashed_id == 0" (node_6) is true
+[11:49:41.156] [bmv2] [T] [thread 11926] [31.0] [cxt 0] Applying table 'tbl_compute_hash_flow_id'
+[11:49:41.156] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Looking up key:
+
+[11:49:41.156] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Table 'tbl_compute_hash_flow_id': miss
+[11:49:41.156] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Action entry is MyEgress.compute_hash_flow_id - 
+[11:49:41.156] [bmv2] [T] [thread 11926] [31.0] [cxt 0] Action MyEgress.compute_hash_flow_id
+[11:49:41.156] [bmv2] [T] [thread 11926] [31.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.srcAddr
+[11:49:41.156] [bmv2] [T] [thread 11926] [31.0] [cxt 0] basic.p4(135) Primitive 7w11
+[11:49:41.156] [bmv2] [T] [thread 11926] [31.0] [cxt 0] basic.p4(135) Primitive hdr.ipv4.dstAddr
+[11:49:41.157] [bmv2] [T] [thread 11926] [31.0] [cxt 0] basic.p4(134) Primitive hash(meta.hashed_id, HashAlgorithm.crc16, 10w0, ...
+[11:49:41.157] [bmv2] [T] [thread 11926] [31.0] [cxt 0] hash(base=0, max=1023) = 889
+[11:49:41.157] [bmv2] [T] [thread 11926] [31.0] [cxt 0] Applying table 'tbl_basic143'
+[11:49:41.157] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Looking up key:
+
+[11:49:41.158] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Table 'tbl_basic143': miss
+[11:49:41.159] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Action entry is basic143 - 
+[11:49:41.159] [bmv2] [T] [thread 11926] [31.0] [cxt 0] Action basic143
+[11:49:41.159] [bmv2] [T] [thread 11926] [31.0] [cxt 0] basic.p4(143) Primitive flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id)
+[11:49:41.159] [bmv2] [T] [thread 11926] [31.0] [cxt 0] Read register 'MyEgress.flow_packet_count_table' at index 889 read value 31
+[11:49:41.159] [bmv2] [T] [thread 11926] [31.0] [cxt 0] basic.p4(144) Primitive tmp_flow_packet_count+1
+[11:49:41.160] [bmv2] [T] [thread 11926] [31.0] [cxt 0] basic.p4(144) Primitive flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1)
+[11:49:41.160] [bmv2] [T] [thread 11926] [31.0] [cxt 0] Wrote register 'MyEgress.flow_packet_count_table' at index 889 with value 32
+[11:49:41.160] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Pipeline 'egress': end
+[11:49:41.160] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Deparser 'deparser': start
+[11:49:41.160] [bmv2] [T] [thread 11926] [31.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[11:49:41.160] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Deparsing header 'ethernet'
+[11:49:41.160] [bmv2] [D] [thread 11926] [31.0] [cxt 0] Deparser 'deparser': end
+[11:49:41.160] [bmv2] [D] [thread 11930] [31.0] [cxt 0] Transmitting packet of size 70 out of port 0
