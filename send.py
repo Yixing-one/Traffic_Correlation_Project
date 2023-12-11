@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
+import argparse
 import random
 import socket
-import sys
 
+from debug_hdrs import Debug
 from scapy.all import IP, TCP, Ether, get_if_hwaddr, get_if_list, sendp
 
 
@@ -19,17 +20,25 @@ def get_if():
     return iface
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('ip_addr', type=str, help="The destination IP address to use")
+    parser.add_argument('message', type=str, help="The message to include in packet")
+    parser.add_argument('--debug', action='store_true', default=False, help='The myTunnel dst_id to use, if unspecified then myTunnel header will not be included in packet')
+    args = parser.parse_args()
 
-    if len(sys.argv)<3:
-        print('pass 2 arguments: <destination> "<message>"')
-        exit(1)
-
-    addr = socket.gethostbyname(sys.argv[1])
+    addr = socket.gethostbyname(args.ip_addr)
+    debug = args.debug
     iface = get_if()
 
-    print("sending on interface %s to %s" % (iface, str(addr)))
-    pkt =  Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff')
-    pkt = pkt /IP(dst=addr) / TCP(dport=1234, sport=random.randint(49152,65535)) / sys.argv[2]
+    if debug:
+        print("sending on interface {} to dst_id {}".format(iface, str(debug)))
+        pkt =  Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff')
+        pkt = pkt / Debug(debug_field=0) / IP(dst=addr) / TCP(dport=1234, sport=random.randint(49152,65535)) / args.message
+    else:
+        print("sending on interface {} to IP addr {}".format(iface, str(addr)))
+        pkt =  Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff')
+        pkt = pkt / IP(dst=addr) / TCP(dport=1234, sport=random.randint(49152,65535)) / args.message
+
     pkt.show2()
     sendp(pkt, iface=iface, verbose=False)
 

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+from debug_hdrs import *
 import os
 import sys
 
@@ -40,10 +42,12 @@ class IPOption_MRI(IPOption):
                                    IntField("", 0),
                                    length_from=lambda pkt:pkt.count*4) ]
 def handle_pkt(pkt):
+    print("got a packet")
+    #pkt.show2()
     if TCP in pkt and pkt[TCP].dport == 1234:
+    #if Debug in pkt:
         print("got a packet")
         pkt.show2()
-    #    hexdump(pkt)
         sys.stdout.flush()
 
 
@@ -57,3 +61,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    

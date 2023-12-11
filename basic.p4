@@ -2,6 +2,7 @@
 #include <core.p4>
 #include <v1model.p4>
 
+const bit<16> TYPE_Debug = 0x1212;
 const bit<16> TYPE_IPV4 = 0x800;
 #define FLOW_TABLE_SIZE_EACH 1024
 #define HASH_BASE 10w0
@@ -21,6 +22,11 @@ header ethernet_t {
     bit<16>   etherType;
 }
 
+header debug_t {
+    bit<16> proto_id;
+    bit<16> debug_field;
+}
+
 header ipv4_t {
     bit<4>    version;
     bit<4>    ihl;
@@ -34,15 +40,15 @@ header ipv4_t {
     bit<16>   hdrChecksum;
     ip4Addr_t srcAddr;
     ip4Addr_t dstAddr;
-    bit<64> debug_field;
 }
 
-struct custom_metadata_t {
+struct metadata {
     bit<32> hashed_id;
 }
 
 struct headers {
     ethernet_t   ethernet;
+    debug_t      debug;
     ipv4_t       ipv4;
 }
 
@@ -52,7 +58,7 @@ struct headers {
 
 parser MyParser(packet_in packet,
                 out headers hdr,
-                inout custom_metadata_t meta,
+                inout metadata meta,
                 inout standard_metadata_t standard_metadata) {
 
     state start {
@@ -61,7 +67,16 @@ parser MyParser(packet_in packet,
 
     state parse_ethernet {
         packet.extract(hdr.ethernet);
-        transition select(hdr.ethernet.etherType) { 
+        transition select(hdr.ethernet.etherType) {
+            TYPE_Debug: parse_debug;
+            TYPE_IPV4: parse_ipv4;
+            default: accept;
+        }
+    }
+
+    state parse_debug {
+        packet.extract(hdr.debug);
+        transition select(hdr.debug.proto_id) {
             TYPE_IPV4: parse_ipv4;
             default: accept;
         }
@@ -71,14 +86,14 @@ parser MyParser(packet_in packet,
         packet.extract(hdr.ipv4);
         transition accept;
     }
-}
 
+}
 
 /*************************************************************************
 ************   C H E C K S U M    V E R I F I C A T I O N   *************
 *************************************************************************/
 
-control MyVerifyChecksum(inout headers hdr, inout custom_metadata_t meta) {
+control MyVerifyChecksum(inout headers hdr, inout metadata meta) {
     apply {  }
 }
 
@@ -88,7 +103,7 @@ control MyVerifyChecksum(inout headers hdr, inout custom_metadata_t meta) {
 *************************************************************************/
 
 control MyIngress(inout headers hdr,
-                  inout custom_metadata_t meta,
+                  inout metadata meta,
                   inout standard_metadata_t standard_metadata) {
     action drop() {
         mark_to_drop(standard_metadata);
@@ -111,13 +126,11 @@ control MyIngress(inout headers hdr,
             NoAction;
         }
         size = 1024;
-        default_action = NoAction();
+        default_action = drop();
     }
 
     apply {
-        if (hdr.ipv4.isValid()) {
-            ipv4_lpm.apply();
-        }
+        ipv4_lpm.apply();
     }
 }
 
@@ -126,9 +139,9 @@ control MyIngress(inout headers hdr,
 *************************************************************************/
 
 control MyEgress(inout headers hdr,
-                 inout custom_metadata_t meta,
+                 inout metadata meta,
                  inout standard_metadata_t standard_metadata) {
-    register<bit<64>>(FLOW_TABLE_SIZE_EACH)  flow_packet_count_table;
+    register<bit<16>>(FLOW_TABLE_SIZE_EACH)  flow_packet_count_table;
 
     action compute_hash_flow_id () {
 		hash(meta.hashed_id, HashAlgorithm.crc16, HASH_BASE,
@@ -139,11 +152,11 @@ control MyEgress(inout headers hdr,
         if(meta.hashed_id == 0) {
             compute_hash_flow_id();
         }
-        bit<64> tmp_flow_packet_count;
+        bit<16> tmp_flow_packet_count = 0;
         flow_packet_count_table.read(tmp_flow_packet_count, meta.hashed_id);
         flow_packet_count_table.write(meta.hashed_id, tmp_flow_packet_count+1);
         // Add debugging information to the packet header
-        //hdr.ipv4.debug_field = tmp_flow_packet_count;
+        hdr.debug.debug_field = tmp_flow_packet_count + 1;
      }
 }
 
@@ -151,7 +164,7 @@ control MyEgress(inout headers hdr,
 *************   C H E C K S U M    C O M P U T A T I O N   **************
 *************************************************************************/
 
-control MyComputeChecksum(inout headers hdr, inout custom_metadata_t meta) {
+control MyComputeChecksum(inout headers  hdr, inout metadata meta) {
      apply {
         update_checksum(
             hdr.ipv4.isValid(),
@@ -171,7 +184,6 @@ control MyComputeChecksum(inout headers hdr, inout custom_metadata_t meta) {
     }
 }
 
-
 /*************************************************************************
 ***********************  D E P A R S E R  *******************************
 *************************************************************************/
@@ -179,6 +191,7 @@ control MyComputeChecksum(inout headers hdr, inout custom_metadata_t meta) {
 control MyDeparser(packet_out packet, in headers hdr) {
     apply {
         packet.emit(hdr.ethernet);
+        packet.emit(hdr.debug);
         packet.emit(hdr.ipv4);
     }
 }
